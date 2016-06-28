@@ -1,0 +1,27 @@
+[user]
+	name = Richard Jonas
+    email = richard.jonas.76@gmail.com
+
+[color]
+    ui = true
+
+[log]
+    decorate
+
+[grep]
+    lineNumber
+
+[push]
+    default = simple
+
+[pull]
+    rebase = true
+
+[alias]
+    s   = status
+    co  = checkout
+    ci  = commit
+    a   = add
+    g   = grep
+    d   = diff
+
