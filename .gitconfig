@@ -1,6 +1,6 @@
 [user]
-	name = Richard Jonas
-    email = richard.jonas.76@gmail.com
+    name = Richard Jonas
+    email = richard.jonas@wallapop.com
 
 [color]
     ui = true
@@ -24,4 +24,10 @@
     a   = add
     g   = grep
     d   = diff
+    b   = branch
+    ps  = push
+    pl  = pull
+    f   = fetch
 
+[credential]
+    helper = osxkeychain
