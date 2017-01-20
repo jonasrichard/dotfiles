@@ -10,8 +10,10 @@ set hls
 set number
 
 " Color schema
-set background=dark
-colorscheme deep-space
+set termguicolors
+set background=light
+"colorscheme deep-space
+colorscheme nova
 
 " Statusline
 set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
@@ -30,6 +32,7 @@ call vundle#begin()
 Plugin 'git@github.com:VundleVim/Vundle.vim.git'
 Plugin 'git@github.com:tpope/vim-fugitive.git'
 Plugin 'git@github.com:vim-erlang/vim-erlang-runtime.git'
+Plugin 'git@github.com:vim-erlang/vim-erlang-tags.git'
 Plugin 'git@github.com:ctrlpvim/ctrlp.vim.git'
 Plugin 'git@github.com:scrooloose/nerdtree.git'
 
@@ -41,6 +44,7 @@ syntax on
 " buffer shortcupts
 noremap <f2> :bdelete<cr>
 noremap <f3> :CtrlPBuffer<cr>
+noremap <f4> :call VimErlangTagsSelect(0)<cr><c-]>
 noremap <d-left> :bprevious<cr>
 noremap <d-right> :bnext<cr>
 
