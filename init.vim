@@ -29,15 +29,23 @@ filetype off
 set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'git@github.com:VundleVim/Vundle.vim.git'
-Plugin 'git@github.com:tpope/vim-fugitive.git'
-Plugin 'git@github.com:vim-erlang/vim-erlang-runtime.git'
-Plugin 'git@github.com:vim-erlang/vim-erlang-tags.git'
-Plugin 'git@github.com:ctrlpvim/ctrlp.vim.git'
-Plugin 'git@github.com:scrooloose/nerdtree.git'
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'tpope/vim-fugitive'
+
+Plugin 'vim-erlang/vim-erlang-compiler'
+Plugin 'vim-erlang/vim-erlang-omnicomplete'
+Plugin 'vim-erlang/vim-erlang-runtime'
+Plugin 'vim-erlang/vim-erlang-tags'
+
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
 
 call vundle#end()
 filetype plugin indent on
+
+" customize html mode
+au FileType html setlocal shiftwidth=2 tabstop=2
 
 syntax on
 
