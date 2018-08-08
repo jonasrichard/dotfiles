@@ -28,7 +28,6 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'scrooloose/nerdtree'
 
 call vundle#end()
-filetype plugin indent on
 
 " customize html mode
 au FileType html setlocal shiftwidth=2 tabstop=2
@@ -58,36 +57,6 @@ set laststatus=2
 set wildignore+=*.beam
 let g:ctrlp_custom_ignore='_build$'
 
-" Plugins
-"set nocompatible
-filetype off
-
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
-
-Plugin 'ctrlpvim/ctrlp.vim'
-
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-commentary'
-
-Plugin 'vim-erlang/vim-erlang-compiler'
-"Plugin 'vim-erlang/vim-erlang-omnicomplete'
-"Plugin 'vim-erlang/vim-erlang-runtime'
-Plugin 'vim-erlang/vim-erlang-tags'
-
-Plugin 'elixir-lang/vim-elixir'
-
-" html & css
-Plugin 'mattn/emmet-vim'
-" typescript
-
-Plugin 'scrooloose/nerdtree'
-
-Plugin 'ap/vim-buftabline'
-
-call vundle#end()
 filetype plugin indent on
 
 syntax on
