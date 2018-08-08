@@ -55,7 +55,30 @@ set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
 set laststatus=2
 
 " ctrlp plugin setup
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|eunit)$'
+set wildignore+=*.beam
+let g:ctrlp_custom_ignore='_build$'
+
+" Plugins
+"set nocompatible
+filetype off
+
+set rtp+=~/.config/nvim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+" Plugin 'git@github.com:vim-erlang/vim-erlang-runtime.git'
+Plugin 'vim-erlang/vim-erlang-tags'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'elixir-lang/vim-elixir'
+
+Plugin 'tpope/vim-commentary'
+
+Plugin 'ap/vim-buftabline'
+
+call vundle#end()
+filetype plugin indent on
 
 syntax on
 
@@ -63,10 +86,18 @@ syntax on
 noremap <f2> :bdelete<cr>
 noremap <f3> :CtrlPBuffer<cr>
 noremap <f4> :call VimErlangTagsSelect(0)<cr><c-]>
-noremap <d-left> :bprevious<cr>
-noremap <d-right> :bnext<cr>
+noremap <s-left> :bprevious<cr>
+noremap <s-right> :bnext<cr>
+noremap <f5> :!ack --type erlang --nocolor <c-r><c-w><cr>
 
 " trailing space removal
 nnoremap ,<space> :%s/\s\+$/<cr>
 vnoremap ,<space> :s/\s\+$/<cr>
+
+noremap ,n :NERDTree<cr>
+
+noremap <c-f9> :vertical resize +5<cr>
+noremap <c-f10> :vertical resize -5<cr>
+noremap <c-f11> :resize +5<cr>
+noremap <c-f12> :resize -5<cr>
 
