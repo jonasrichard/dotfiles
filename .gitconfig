@@ -1,6 +1,6 @@
 [user]
-    name = Richard Jonas
-    email = richard.jonas@wallapop.com
+	name = Richard Jonas
+	email = richard.jonas@wallapop.com
 
 [color]
     ui = true
@@ -18,16 +18,26 @@
     rebase = true
 
 [alias]
-    s   = status
-    co  = checkout
-    ci  = commit
-    a   = add
-    g   = grep
-    d   = diff
-    b   = branch
-    ps  = push
-    pl  = pull
-    f   = fetch
+    s       = status
+    co      = checkout
+    ci      = commit
+    a       = add
+    g       = grep
+    d       = diff
+    b       = branch
+    ps      = push
+    pl      = pull
+    f       = fetch
+    msync   = fetch origin master:master
+    dsync   = fetch origin develop:develop
 
 [credential]
     helper = osxkeychain
+[core]
+	editor = nvim
+	excludesfile = /Users/richard/.gitignore
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
