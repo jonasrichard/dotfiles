@@ -66,14 +66,24 @@ set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
-" Plugin 'git@github.com:vim-erlang/vim-erlang-runtime.git'
-Plugin 'vim-erlang/vim-erlang-tags'
+
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
+
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-commentary'
+
+Plugin 'vim-erlang/vim-erlang-compiler'
+"Plugin 'vim-erlang/vim-erlang-omnicomplete'
+"Plugin 'vim-erlang/vim-erlang-runtime'
+Plugin 'vim-erlang/vim-erlang-tags'
+
 Plugin 'elixir-lang/vim-elixir'
 
-Plugin 'tpope/vim-commentary'
+" html & css
+Plugin 'mattn/emmet-vim'
+" typescript
+
+Plugin 'scrooloose/nerdtree'
 
 Plugin 'ap/vim-buftabline'
 
