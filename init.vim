@@ -26,6 +26,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'leafgarland/typescript-vim'
 
 Plugin 'scrooloose/nerdtree'
+Plugin 'ap/vim-buftabline'
 
 call vundle#end()
 
