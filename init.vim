@@ -3,8 +3,8 @@ filetype off
 
 " set runtime path
 set rtp+=~/.vim/bundle/Vundle.vim
-
 set rtp+=~/.config/nvim/bundle/Vundle.vim
+
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
@@ -30,6 +30,7 @@ Bundle 'vim-ruby/vim-ruby'
 
 " html & css
 Plugin 'mattn/emmet-vim'
+
 " typescript
 Plugin 'leafgarland/typescript-vim'
 
@@ -38,6 +39,8 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " buffer tab
 Plugin 'ap/vim-buftabline'
+
+Plugin 'jakwings/vim-pony'
 
 call vundle#end()
 
@@ -58,8 +61,8 @@ set number
 set termguicolors
 set background=light
 "colorscheme deep-space
-"colorscheme nova
-" colorscheme scheakur
+" colorscheme nova
+colorscheme scheakur
 
 " Statusline
 set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
