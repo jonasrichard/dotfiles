@@ -9,16 +9,24 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'vim-airline/vim-airline'
+
 Plugin 'ctrlpvim/ctrlp.vim'
 
+" Git
 Plugin 'tpope/vim-fugitive'
 
+" Erlang
 Plugin 'vim-erlang/vim-erlang-compiler'
 Plugin 'vim-erlang/vim-erlang-omnicomplete'
 Plugin 'vim-erlang/vim-erlang-runtime'
 Plugin 'vim-erlang/vim-erlang-tags'
 
+" Elixir
 Plugin 'elixir-lang/vim-elixir'
+
+" Ruby
+Bundle 'vim-ruby/vim-ruby'
 
 " html & css
 Plugin 'mattn/emmet-vim'
@@ -26,6 +34,9 @@ Plugin 'mattn/emmet-vim'
 Plugin 'leafgarland/typescript-vim'
 
 Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+
+" buffer tab
 Plugin 'ap/vim-buftabline'
 
 call vundle#end()
@@ -47,7 +58,7 @@ set number
 set termguicolors
 set background=light
 "colorscheme deep-space
-colorscheme nova
+"colorscheme nova
 " colorscheme scheakur
 
 " Statusline
@@ -60,6 +71,8 @@ let g:ctrlp_custom_ignore='_build$'
 
 filetype plugin indent on
 
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
 syntax on
 
 " buffer shortcupts
@@ -69,6 +82,7 @@ noremap <f4> :call VimErlangTagsSelect(0)<cr><c-]>
 noremap <s-left> :bprevious<cr>
 noremap <s-right> :bnext<cr>
 noremap <f5> :!ack --type erlang --nocolor <c-r><c-w><cr>
+noremap <f6> :ta <c-r><c-w><cr>
 
 " trailing space removal
 nnoremap ,<space> :%s/\s\+$/<cr>
