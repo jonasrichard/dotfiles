@@ -64,6 +64,8 @@ set background=light
 " colorscheme nova
 colorscheme scheakur
 
+let g:NERDTreeNodeDelimiter = "\u00a0"
+
 " Statusline
 set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
 set laststatus=2
