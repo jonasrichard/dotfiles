@@ -100,9 +100,9 @@ noremap <c-f10> :vertical resize -5<cr>
 noremap <c-f11> :resize +5<cr>
 noremap <c-f12> :resize -5<cr>
 
-:iabbrev _emod  defmodule do<cr><cr>end
-:iabbrev _efun  fun () do<cr><cr>end
-:iabbrev _efun  fun () do<cr><cr>end
+:imap <buffer> ;mod defmodule  do<cr>end<esc>kwhi
+:imap <buffer> ;fun def  do<cr>end<esc>kwhi
+:imap <buffer> ;case case  do<cr>_ -><cr>:ok<cr>end<esc>3kwhi
 
 if has("autocmd")
     augroup templates
