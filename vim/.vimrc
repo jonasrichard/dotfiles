@@ -81,7 +81,7 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 syntax on
 
 " buffer shortcupts
-noremap <f2> :bp\|bd<cr>
+noremap <f2> :bp\|bd #<cr>
 noremap <f3> :CtrlPBuffer<cr>
 noremap <f4> :call VimErlangTagsSelect(0)<cr><c-]>
 noremap <s-left> :bprevious<cr>
