@@ -19,6 +19,9 @@ Plug 'vim-erlang/vim-erlang-omnicomplete'
 Plug 'vim-erlang/vim-erlang-runtime'
 Plug 'vim-erlang/vim-erlang-tags'
 
+" Rust
+Plug 'rust-lang/rust.vim'
+
 " Ruby
 Plug 'vim-ruby/vim-ruby'
 
