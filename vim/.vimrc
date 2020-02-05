@@ -13,6 +13,9 @@ Plugin 'vim-airline/vim-airline'
 
 Plugin 'ctrlpvim/ctrlp.vim'
 
+" fzf
+Plugin 'junegunn/fzf.vim'
+
 " Git
 Plugin 'tpope/vim-fugitive'
 
@@ -40,7 +43,8 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 " buffer tab
 Plugin 'ap/vim-buftabline'
 
-Plugin 'nightsense/cosmic_latte'
+" Nice color scheme
+Plugin 'morhetz/gruvbox'
 
 call vundle#end()
 
@@ -58,11 +62,7 @@ set hls
 set number
 
 " Color schema
-set termguicolors
-set background=light
-"colorscheme deep-space
-" colorscheme nova
-colorscheme scheakur
+colorscheme gruvbox
 
 let g:NERDTreeNodeDelimiter = "\u00a0"
 
@@ -73,6 +73,10 @@ set laststatus=2
 " ctrlp plugin setup
 set wildignore+=*.beam
 let g:ctrlp_custom_ignore='_build$'
+
+set backspace=indent,eol,start
+
+set guifont=Menlo:h13
 
 filetype plugin indent on
 
