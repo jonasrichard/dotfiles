@@ -3,7 +3,9 @@ filetype off
 
 " set runtime path
 set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=~/.config/nvim/bundle/Vundle.vim
+
+" add fzf to the path
+set rtp+=/usr/local/opt/fzf
 
 call vundle#begin()
 
@@ -27,6 +29,9 @@ Plugin 'vim-erlang/vim-erlang-tags'
 
 " Elixir
 Plugin 'elixir-lang/vim-elixir'
+
+" Go
+Plugin 'fatih/vim-go'
 
 " Ruby
 Bundle 'vim-ruby/vim-ruby'
@@ -100,10 +105,10 @@ vnoremap ,<space> :s/\s\+$/<cr>
 
 noremap ,n :NERDTree<cr>
 
-noremap <c-f9> :vertical resize +5<cr>
-noremap <c-f10> :vertical resize -5<cr>
-noremap <c-f11> :resize +5<cr>
-noremap <c-f12> :resize -5<cr>
+noremap ,V :vertical resize +5<cr>
+noremap ,v :vertical resize -5<cr>
+noremap ,H :resize +5<cr>
+noremap ,h :resize -5<cr>
 
 :imap <buffer> ;mod defmodule  do<cr>end<esc>kwhi
 :imap <buffer> ;fun def  do<cr>end<esc>kwhi
