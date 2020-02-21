@@ -96,7 +96,7 @@ noremap <f3> :CtrlPBuffer<cr>
 noremap <f4> :call VimErlangTagsSelect(0)<cr><c-]>
 noremap <s-left> :bprevious<cr>
 noremap <s-right> :bnext<cr>
-noremap <f5> :!ack --type erlang --nocolor <c-r><c-w><cr>
+noremap <f5> :Rg <c-r><c-w><cr>
 noremap <f6> :ta <c-r><c-w><cr>
 
 " trailing space removal
