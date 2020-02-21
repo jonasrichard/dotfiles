@@ -114,6 +114,8 @@ noremap ,h :resize -5<cr>
 :imap <buffer> ;fun def  do<cr>end<esc>kwhi
 :imap <buffer> ;case case  do<cr>_ -><cr>:ok<cr>end<esc>3kwhi
 
+autocmd FileType go :imap <buffer> ;err if err != nil {<cr>return err<cr>}<esc>k
+
 if has("autocmd")
     augroup templates
         autocmd BufNewFile *.ex 0r ~/.vim/templates/elixir.ex
