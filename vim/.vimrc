@@ -56,6 +56,10 @@ call vundle#end()
 " customize html mode
 au FileType html setlocal shiftwidth=2 tabstop=2
 
+" enable :find command wildcards
+set path+=**
+set wildmenu
+
 " Standard tab settings
 set expandtab
 set tabstop=4
@@ -105,10 +109,10 @@ vnoremap ,<space> :s/\s\+$/<cr>
 
 noremap ,n :NERDTree<cr>
 
-noremap ,V :vertical resize +5<cr>
-noremap ,v :vertical resize -5<cr>
-noremap ,H :resize +5<cr>
-noremap ,h :resize -5<cr>
+noremap ,v :vertical resize +5<cr>
+noremap ,V :vertical resize -5<cr>
+noremap ,h :resize +5<cr>
+noremap ,H :resize -5<cr>
 
 :imap <buffer> ;mod defmodule  do<cr>end<esc>kwhi
 :imap <buffer> ;fun def  do<cr>end<esc>kwhi
@@ -121,3 +125,8 @@ if has("autocmd")
         autocmd BufNewFile *.ex 0r ~/.vim/templates/elixir.ex
     augroup END
 endif
+
+function Gotags()
+    !/usr/local/bin/gotags -f tags -R .
+endfunction
+
