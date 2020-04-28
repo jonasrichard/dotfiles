@@ -7,6 +7,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 " add fzf to the path
 set rtp+=/usr/local/opt/fzf
 
+let g:move_key_modifier = 'C'
+
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
@@ -50,6 +52,9 @@ Plugin 'ap/vim-buftabline'
 
 " Nice color scheme
 Plugin 'morhetz/gruvbox'
+
+" Move plugin
+Plugin 'matze/vim-move'
 
 call vundle#end()
 
