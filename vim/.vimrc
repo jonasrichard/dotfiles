@@ -53,6 +53,8 @@ Plugin 'morhetz/gruvbox'
 
 call vundle#end()
 
+source ~/.vim/rc-airline
+
 " customize html mode
 au FileType html setlocal shiftwidth=2 tabstop=2
 
@@ -94,6 +96,8 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 syntax on
 
+:let mapleader = ","
+
 " buffer shortcupts
 noremap <f2> :bp\|bd #<cr>
 noremap <f3> :CtrlPBuffer<cr>
@@ -119,6 +123,11 @@ noremap ,H :resize -5<cr>
 :imap <buffer> ;case case  do<cr>_ -><cr>:ok<cr>end<esc>3kwhi
 
 autocmd FileType go :imap <buffer> ;err if err != nil {<cr>return err<cr>}<esc>k
+autocmd FileType go :imap <buffer> ;errp if err != nil {<cr>panic(err.Error())<cr>}<esc>k
+autocmd FileType go noremap <leader>d :GoDescribe 
+
+" I think vim-go already set these up but let us see
+"autocmd FileType go :set noexpandtab copyindent preserveindent softtabstop=0 shiftwidth=4 tabstop=4
 
 if has("autocmd")
     augroup templates
