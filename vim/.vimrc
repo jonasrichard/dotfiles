@@ -23,6 +23,9 @@ Plugin 'junegunn/fzf.vim'
 " Git
 Plugin 'tpope/vim-fugitive'
 
+" Conquer of completion plugin
+Plugin 'neoclide/coc.nvim'
+
 " Erlang
 Plugin 'vim-erlang/vim-erlang-compiler'
 Plugin 'vim-erlang/vim-erlang-omnicomplete'
@@ -56,9 +59,13 @@ Plugin 'morhetz/gruvbox'
 " Move plugin
 Plugin 'matze/vim-move'
 
+" Date manipulation
+Plugin 'tpope/vim-speeddating'
+
 call vundle#end()
 
 source ~/.vim/rc-airline
+source ~/.vim/coc
 
 " customize html mode
 au FileType html setlocal shiftwidth=2 tabstop=2
