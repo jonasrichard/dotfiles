@@ -7,12 +7,14 @@ set rtp+=~/.vim/bundle/Vundle.vim
 " add fzf to the path
 set rtp+=/usr/local/opt/fzf
 
+" For the move plugin
 let g:move_key_modifier = 'C'
 
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
+" nice statusbar
 Plugin 'vim-airline/vim-airline'
 
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -23,29 +25,29 @@ Plugin 'junegunn/fzf.vim'
 " Git
 Plugin 'tpope/vim-fugitive'
 
-" Conquer of completion plugin
-Plugin 'neoclide/coc.nvim'
+" ALE linter
+Plugin 'w0rp/ale'
 
 " Erlang
-Plugin 'vim-erlang/vim-erlang-compiler'
-Plugin 'vim-erlang/vim-erlang-omnicomplete'
-Plugin 'vim-erlang/vim-erlang-runtime'
-Plugin 'vim-erlang/vim-erlang-tags'
+"Plugin 'vim-erlang/vim-erlang-compiler'
+"Plugin 'vim-erlang/vim-erlang-omnicomplete'
+"Plugin 'vim-erlang/vim-erlang-runtime'
+"Plugin 'vim-erlang/vim-erlang-tags'
 
 " Elixir
-Plugin 'elixir-lang/vim-elixir'
+"Plugin 'elixir-lang/vim-elixir'
 
 " Go
-Plugin 'fatih/vim-go'
+"Plugin 'fatih/vim-go'
 
 " Ruby
-Bundle 'vim-ruby/vim-ruby'
+"Bundle 'vim-ruby/vim-ruby'
 
 " html & css
-Plugin 'mattn/emmet-vim'
+"Plugin 'mattn/emmet-vim'
 
 " typescript
-Plugin 'leafgarland/typescript-vim'
+"Plugin 'leafgarland/typescript-vim'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
@@ -65,7 +67,16 @@ Plugin 'tpope/vim-speeddating'
 call vundle#end()
 
 source ~/.vim/rc-airline
-source ~/.vim/coc
+
+" ALE Go config
+let g:ale_completion_enabled = 1
+let g:ale_linters = {
+  \ 'go': ['golangserver'],
+  \ }
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 
 " customize html mode
 au FileType html setlocal shiftwidth=2 tabstop=2
