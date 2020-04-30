@@ -70,8 +70,11 @@ source ~/.vim/rc-airline
 
 " ALE Go config
 let g:ale_completion_enabled = 1
+let g:ale_fixers = {
+  \ 'go': ['gofmt', 'goimports'],
+  \ }
 let g:ale_linters = {
-  \ 'go': ['golangserver'],
+  \ 'go': ['golangserver', 'golangci-lint'],
   \ }
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
