@@ -28,6 +28,9 @@ Plugin 'tpope/vim-fugitive'
 " ALE linter
 Plugin 'w0rp/ale'
 
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-surround'
+
 " Erlang
 "Plugin 'vim-erlang/vim-erlang-compiler'
 "Plugin 'vim-erlang/vim-erlang-omnicomplete'
