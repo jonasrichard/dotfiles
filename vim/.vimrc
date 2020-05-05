@@ -137,15 +137,17 @@ noremap <f5> :Rg <c-r><c-w><cr>
 noremap <f6> :ta <c-r><c-w><cr>
 
 " trailing space removal
-nnoremap ,<space> :%s/\s\+$/<cr>
-vnoremap ,<space> :s/\s\+$/<cr>
+nnoremap <leader><space> :%s/\s\+$/<cr>
+vnoremap <leader><space> :s/\s\+$/<cr>
 
-noremap ,n :NERDTree<cr>
+noremap <leader>n :NERDTree<cr>
 
-noremap ,v :vertical resize +5<cr>
-noremap ,V :vertical resize -5<cr>
-noremap ,h :resize +5<cr>
-noremap ,H :resize -5<cr>
+noremap <leader>v :vertical resize +5<cr>
+noremap <leader>V :vertical resize -5<cr>
+noremap <leader>h :resize +5<cr>
+noremap <leader>H :resize -5<cr>
+
+noremap <leader>d :ALEGoToDefinition<cr>
 
 :imap <buffer> ;mod defmodule  do<cr>end<esc>kwhi
 :imap <buffer> ;fun def  do<cr>end<esc>kwhi
@@ -153,7 +155,6 @@ noremap ,H :resize -5<cr>
 
 autocmd FileType go :imap <buffer> ;err if err != nil {<cr>return err<cr>}<esc>k
 autocmd FileType go :imap <buffer> ;errp if err != nil {<cr>panic(err.Error())<cr>}<esc>k
-autocmd FileType go noremap <leader>d :GoDescribe 
 
 " I think vim-go already set these up but let us see
 "autocmd FileType go :set noexpandtab copyindent preserveindent softtabstop=0 shiftwidth=4 tabstop=4
