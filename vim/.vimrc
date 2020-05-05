@@ -148,6 +148,7 @@ noremap <leader>h :resize +5<cr>
 noremap <leader>H :resize -5<cr>
 
 noremap <leader>d :ALEGoToDefinition<cr>
+noremap <leader>f :ALEFix<cr>
 
 :imap <buffer> ;mod defmodule  do<cr>end<esc>kwhi
 :imap <buffer> ;fun def  do<cr>end<esc>kwhi
