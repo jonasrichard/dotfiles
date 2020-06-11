@@ -17,8 +17,6 @@ Plugin 'VundleVim/Vundle.vim'
 " nice statusbar
 Plugin 'vim-airline/vim-airline'
 
-Plugin 'ctrlpvim/ctrlp.vim'
-
 " fzf
 Plugin 'junegunn/fzf.vim'
 
@@ -77,7 +75,7 @@ let g:ale_fixers = {
   \ 'go': ['gofmt', 'goimports'],
   \ }
 let g:ale_linters = {
-  \ 'go': ['golangserver', 'golangci-lint'],
+  \ 'go': ['gobuild', 'golangserver', 'golangci-lint'],
   \ }
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
@@ -128,34 +126,45 @@ syntax on
 :let mapleader = ","
 
 " buffer shortcupts
-noremap <f2> :bp\|bd #<cr>
-noremap <f3> :CtrlPBuffer<cr>
-noremap <f4> :call VimErlangTagsSelect(0)<cr><c-]>
-noremap <s-left> :bprevious<cr>
-noremap <s-right> :bnext<cr>
-noremap <f5> :Rg <c-r><c-w><cr>
-noremap <f6> :ta <c-r><c-w><cr>
+nnoremap <f2> :bp\|bd #<cr>
+nnoremap <f3> :CtrlPBuffer<cr>
+nnoremap <f4> :call VimErlangTagsSelect(0)<cr><c-]>
+nnoremap <s-left> :bprevious<cr>
+nnoremap <s-right> :bnext<cr>
+nnoremap <f5> :Rg <c-r><c-w><cr>
+nnoremap <f6> :ta <c-r><c-w><cr>
 
 " trailing space removal
 nnoremap <leader><space> :%s/\s\+$/<cr>
 vnoremap <leader><space> :s/\s\+$/<cr>
 
-noremap <leader>n :NERDTree<cr>
+nnoremap <leader>n :NERDTree<cr>
 
-noremap <leader>v :vertical resize +5<cr>
-noremap <leader>V :vertical resize -5<cr>
-noremap <leader>h :resize +5<cr>
-noremap <leader>H :resize -5<cr>
+nnoremap <leader>c "*y<cr>
+inoremap <c-x> <esc>ddi
+inoremap <c-k> <esc>yykpi
+inoremap <c-j> <esc>yypi
 
-noremap <leader>d :ALEGoToDefinition<cr>
-noremap <leader>f :ALEFix<cr>
+nnoremap <leader>v :vertical resize +5<cr>
+nnoremap <leader>V :vertical resize -5<cr>
+nnoremap <leader>h :resize +5<cr>
+nnoremap <leader>H :resize -5<cr>
 
-:imap <buffer> ;mod defmodule  do<cr>end<esc>kwhi
-:imap <buffer> ;fun def  do<cr>end<esc>kwhi
-:imap <buffer> ;case case  do<cr>_ -><cr>:ok<cr>end<esc>3kwhi
+nnoremap <leader>d :ALEGoToDefinition<cr>
+nnoremap <leader>f :ALEFix<cr>
+
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+"vnoremap s" <esc>`>a"<esc>`<i"<esc>
+
+autocmd FileType elixir :imap <buffer> ;mod defmodule  do<cr>end<esc>kwhi
+autocmd FileType elixir :imap <buffer> ;fun def  do<cr>end<esc>kwhi
+autocmd FileType elixir :imap <buffer> ;case case  do<cr>_ -><cr>:ok<cr>end<esc>3kwhi
 
 autocmd FileType go :imap <buffer> ;err if err != nil {<cr>return err<cr>}<esc>k
 autocmd FileType go :imap <buffer> ;errp if err != nil {<cr>panic(err.Error())<cr>}<esc>k
+autocmd FileType go nnoremap <leader>/ I//<esc>
 
 " I think vim-go already set these up but let us see
 "autocmd FileType go :set noexpandtab copyindent preserveindent softtabstop=0 shiftwidth=4 tabstop=4
