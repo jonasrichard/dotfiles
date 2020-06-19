@@ -26,6 +26,9 @@ Plugin 'tpope/vim-fugitive'
 " ALE linter
 Plugin 'w0rp/ale'
 
+" Terraform from HashiCorp
+Plugin 'hashivim/vim-terraform'
+
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 
@@ -71,14 +74,19 @@ source ~/.vim/rc-airline
 
 " ALE Go config
 let g:ale_completion_enabled = 1
+let g:ale_fix_on_save = 1
+let g:ale_lint_on_text_changed = 'always'
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+
 let g:ale_fixers = {
+  \ '*': ['remove_trailing_lines', 'trim_whitespace'],
   \ 'go': ['gofmt', 'goimports'],
   \ }
 let g:ale_linters = {
   \ 'go': ['gobuild', 'golangserver', 'golangci-lint'],
   \ }
-let g:ale_sign_error = '✘'
-let g:ale_sign_warning = '⚠'
+
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
 highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 
@@ -134,6 +142,9 @@ nnoremap <s-right> :bnext<cr>
 nnoremap <f5> :Rg <c-r><c-w><cr>
 nnoremap <f6> :ta <c-r><c-w><cr>
 
+" in HUN keymap this is a nightmare
+nnoremap <leader>j <c-]>
+
 " trailing space removal
 nnoremap <leader><space> :%s/\s\+$/<cr>
 vnoremap <leader><space> :s/\s\+$/<cr>
@@ -141,7 +152,6 @@ vnoremap <leader><space> :s/\s\+$/<cr>
 nnoremap <leader>n :NERDTree<cr>
 
 nnoremap <leader>c "*y<cr>
-inoremap <c-x> <esc>ddi
 inoremap <c-k> <esc>yykpi
 inoremap <c-j> <esc>yypi
 
@@ -162,9 +172,12 @@ autocmd FileType elixir :imap <buffer> ;mod defmodule  do<cr>end<esc>kwhi
 autocmd FileType elixir :imap <buffer> ;fun def  do<cr>end<esc>kwhi
 autocmd FileType elixir :imap <buffer> ;case case  do<cr>_ -><cr>:ok<cr>end<esc>3kwhi
 
-autocmd FileType go :imap <buffer> ;err if err != nil {<cr>return err<cr>}<esc>k
-autocmd FileType go :imap <buffer> ;errp if err != nil {<cr>panic(err.Error())<cr>}<esc>k
-autocmd FileType go nnoremap <leader>/ I//<esc>
+autocmd FileType go :iabbrev <buffer> _err if err != nil {<cr>return err<cr>}<up><end>
+autocmd FileType go :iabbrev <buffer> _errp if err != nil {<cr>panic(err)<cr>}<up><end>
+autocmd FileType go :iabbrev <buffer> _erre if err := x(); err != nil {<cr>return err<cr>}<up><end>
+autocmd FileType go nnoremap <localleader>/ I//<esc>
+
+autocmd FileType tf nnoremap <leader>t mx:%!terraform fmt -write=false -<cr>'x
 
 " I think vim-go already set these up but let us see
 "autocmd FileType go :set noexpandtab copyindent preserveindent softtabstop=0 shiftwidth=4 tabstop=4
@@ -178,4 +191,3 @@ endif
 function Gotags()
     !/usr/local/bin/gotags -f tags -R .
 endfunction
-
