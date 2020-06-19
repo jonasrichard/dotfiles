@@ -1,0 +1,15 @@
+[Unit]
+Description=Generic Linux Service
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/add-dir
+ExecStart=/bin/bash /opt/app-dir/app-bin start
+ExecStop=/bin/bash /opt/app-dir/app-bin stop
+Restart=on-failure
+StandardOutput=syslog
+StandardError=syslog
+SyslogFacility=local1
+
+[Install]
+WantedBy=multi-user.target
