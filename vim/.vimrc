@@ -1,3 +1,4 @@
+" TODO grouping autocmd
 set nocompatible
 filetype off
 
@@ -107,6 +108,9 @@ set hls
 " Turn on line numbering
 set number
 
+set undodir=~/.vim-undo
+set undofile
+
 " Color schema
 colorscheme gruvbox
 
@@ -151,7 +155,7 @@ vnoremap <leader><space> :s/\s\+$/<cr>
 
 nnoremap <leader>n :NERDTree<cr>
 
-nnoremap <leader>c "*y<cr>
+nnoremap <leader>y "*y
 inoremap <c-k> <esc>yykpi
 inoremap <c-j> <esc>yypi
 
@@ -177,7 +181,11 @@ autocmd FileType go :iabbrev <buffer> _errp if err != nil {<cr>panic(err)<cr>}<u
 autocmd FileType go :iabbrev <buffer> _erre if err := x(); err != nil {<cr>return err<cr>}<up><end>
 autocmd FileType go nnoremap <localleader>/ I//<esc>
 
-autocmd FileType tf nnoremap <leader>t mx:%!terraform fmt -write=false -<cr>'x
+autocmd FileType terraform nnoremap <leader>t mx:%!terraform fmt -write=false -<cr>'x
+
+autocmd FileType css nnoremap <leader>/ _i/*<esc>A*/<esc>
+
+autocmd FileType markdown vnoremap <leader>s c{%  %}<esc>hhP
 
 " I think vim-go already set these up but let us see
 "autocmd FileType go :set noexpandtab copyindent preserveindent softtabstop=0 shiftwidth=4 tabstop=4
