@@ -139,10 +139,8 @@ syntax on
 
 " buffer shortcupts
 nnoremap <f2> :bp\|bd #<cr>
-nnoremap <f3> :CtrlPBuffer<cr>
-nnoremap <f4> :call VimErlangTagsSelect(0)<cr><c-]>
-nnoremap <s-left> :bprevious<cr>
-nnoremap <s-right> :bnext<cr>
+nnoremap <f3> :bprevious<cr>
+nnoremap <f4> :bnext<cr>
 nnoremap <f5> :Rg <c-r><c-w><cr>
 nnoremap <f6> :ta <c-r><c-w><cr>
 
