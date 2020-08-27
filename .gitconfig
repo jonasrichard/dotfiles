@@ -30,6 +30,7 @@
     f       = fetch
     msync   = fetch origin master:master
     dsync   = fetch origin develop:develop
+    report  = log --pretty=format:'[%h] %ad %aN %s' --date=short
 
 [credential]
     helper = osxkeychain
