@@ -28,6 +28,7 @@ Look around
 
 ```bash
 tcpdump -nS
+tcpdump -nS 'tcp port http'
 ```
 
 This is useful, captures the syn and fin packets, so whenever a tcp stream starts and ends.

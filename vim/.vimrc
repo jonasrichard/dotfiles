@@ -73,6 +73,8 @@ call vundle#end()
 
 source ~/.vim/rc-airline
 
+set background=dark
+
 " ALE Go config
 let g:ale_completion_enabled = 1
 let g:ale_fix_on_save = 1
