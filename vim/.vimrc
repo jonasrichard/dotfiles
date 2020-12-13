@@ -54,6 +54,9 @@ Plugin 'tpope/vim-surround'
 " typescript
 "Plugin 'leafgarland/typescript-vim'
 
+" toml plugin
+Plugin 'cespare/vim-toml'
+
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 
@@ -85,9 +88,11 @@ let g:ale_sign_warning = '⚠'
 let g:ale_fixers = {
   \ '*': ['remove_trailing_lines', 'trim_whitespace'],
   \ 'go': ['gofmt', 'goimports'],
+  \ 'rust': ['rustfmt'],
   \ }
 let g:ale_linters = {
   \ 'go': ['gobuild', 'golangserver', 'golangci-lint'],
+  \ 'rust': ['rustc', 'rls'],
   \ }
 
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
