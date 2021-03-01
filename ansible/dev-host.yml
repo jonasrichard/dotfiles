@@ -1,0 +1,39 @@
+---
+- name: Set up dev environment
+  hosts:
+    - dev
+  tasks:
+    - name: Install VIM
+      become: yes
+      ansible.builtin.package:
+        name: vim
+        state: present
+
+    - name: Make .vim directory
+      ansible.builtin.file:
+        path: $HOME/.vim
+        state: directory
+
+    - name: Download .vimrc
+      get_url:
+        url: https://raw.githubusercontent.com/jonasrichard/dotfiles/master/vim/.vimrc
+        dest: .vimrc
+
+    - name: Download VIM airline
+      get_url:
+        url: https://raw.githubusercontent.com/jonasrichard/dotfiles/master/vim/rc-airline
+        dest: .vim/rc-airline
+
+    - name: Install git and go
+      become: yes
+      ansible.builtin.package:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - git
+        - go
+
+    - name: Download Vundle
+      ansible.builtin.git:
+        repo: https://github.com/VundleVim/Vundle.vim.git
+        dest: $HOME/.vim/bundle/Vundle.vim

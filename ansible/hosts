@@ -1,0 +1,9 @@
+[cockroach]
+20.82.161.72
+
+[dev]
+20.67.25.203
+
+[all:vars]
+ansible_user=derazadmin
+ansible_ssh_private_key_file=~/.ssh/azure-default
