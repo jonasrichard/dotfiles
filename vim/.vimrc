@@ -87,11 +87,12 @@ let g:ale_sign_warning = '⚠'
 
 let g:ale_fixers = {
   \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+  \ 'elixir': ['mix_format'],
   \ 'go': ['gofmt', 'goimports'],
   \ 'rust': ['rustfmt'],
   \ }
 let g:ale_linters = {
-  \ 'go': ['gobuild', 'golangserver', 'golangci-lint'],
+  \ 'go': ['gopls', 'golangci-lint'],
   \ 'rust': ['rustc', 'rls'],
   \ }
 
@@ -149,7 +150,6 @@ nnoremap <f2> :bp\|bd #<cr>
 nnoremap <f3> :bprevious<cr>
 nnoremap <f4> :bnext<cr>
 nnoremap <f5> :Rg <c-r><c-w><cr>
-nnoremap <f6> :ta <c-r><c-w><cr>
 
 " in HUN keymap this is a nightmare
 nnoremap <leader>j <c-]>
@@ -160,7 +160,7 @@ vnoremap <leader><space> :s/\s\+$/<cr>
 
 nnoremap <leader>n :NERDTree<cr>
 
-nnoremap <leader>y "*y
+vnoremap <leader>y "*y
 inoremap <c-k> <esc>yykpi
 inoremap <c-j> <esc>yypi
 
@@ -177,14 +177,20 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 
 "vnoremap s" <esc>`>a"<esc>`<i"<esc>
 
-autocmd FileType elixir :imap <buffer> ;mod defmodule  do<cr>end<esc>kwhi
-autocmd FileType elixir :imap <buffer> ;fun def  do<cr>end<esc>kwhi
-autocmd FileType elixir :imap <buffer> ;case case  do<cr>_ -><cr>:ok<cr>end<esc>3kwhi
+augroup elixir
+    autocmd!
+    autocmd FileType elixir :imap <buffer> ;mod defmodule  do<cr>end<esc>kwhi
+    autocmd FileType elixir :imap <buffer> ;fun def  do<cr>end<esc>kwhi
+    autocmd FileType elixir :imap <buffer> ;case case  do<cr>_ -><cr>:ok<cr>end<esc>3kwhi
+augroup END
 
-autocmd FileType go :iabbrev <buffer> _err if err != nil {<cr>return err<cr>}<up><end>
-autocmd FileType go :iabbrev <buffer> _errp if err != nil {<cr>panic(err)<cr>}<up><end>
-autocmd FileType go :iabbrev <buffer> _erre if err := x(); err != nil {<cr>return err<cr>}<up><end>
-autocmd FileType go nnoremap <localleader>/ I//<esc>
+augroup go
+    autocmd!
+    autocmd FileType go :iabbrev <buffer> _errr if err != nil {<cr>return err<cr>}<up><end>
+    autocmd FileType go :iabbrev <buffer> _errp if err != nil {<cr>panic(err)<cr>}<up><end>
+    autocmd FileType go :iabbrev <buffer> _erre if err := x(); err != nil {<cr>return err<cr>}<up><end>
+    autocmd FileType go nnoremap <localleader>/ I//<esc>
+augroup END
 
 autocmd FileType terraform nnoremap <leader>t mx:%!terraform fmt -write=false -<cr>'x
 
