@@ -81,7 +81,7 @@ set background=dark
 " ALE Go config
 let g:ale_completion_enabled = 1
 let g:ale_fix_on_save = 1
-let g:ale_lint_on_text_changed = 'always'
+" let g:ale_lint_on_text_changed = 'always'
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
 
@@ -93,7 +93,7 @@ let g:ale_fixers = {
   \ }
 let g:ale_linters = {
   \ 'go': ['gopls', 'golangci-lint'],
-  \ 'rust': ['rustc', 'rls'],
+  \ 'rust': ['analyzer'],
   \ }
 
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
@@ -138,9 +138,6 @@ set guifont=Menlo:h13
 
 filetype plugin indent on
 
-autocmd FileType elixir setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-
 syntax on
 
 :let mapleader = ","
@@ -151,23 +148,30 @@ nnoremap <f3> :bprevious<cr>
 nnoremap <f4> :bnext<cr>
 nnoremap <f5> :Rg <c-r><c-w><cr>
 
-" in HUN keymap this is a nightmare
-nnoremap <leader>j <c-]>
-
 " trailing space removal
 nnoremap <leader><space> :%s/\s\+$/<cr>
 vnoremap <leader><space> :s/\s\+$/<cr>
 
 nnoremap <leader>n :NERDTree<cr>
 
+" copy visual to system clipboard
 vnoremap <leader>y "*y
+" move line up
 inoremap <c-k> <esc>yykpi
+" move line down
 inoremap <c-j> <esc>yypi
 
-nnoremap <leader>v :vertical resize +5<cr>
-nnoremap <leader>V :vertical resize -5<cr>
-nnoremap <leader>h :resize +5<cr>
-nnoremap <leader>H :resize -5<cr>
+" window navigation
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
+
+" window resize
+nnoremap <right> :vertical resize -5<cr>
+nnoremap <left> :vertical resize +5<cr>
+nnoremap <down> :resize -5<cr>
+nnoremap <up> :resize +5<cr>
 
 nnoremap <leader>d :ALEGoToDefinition<cr>
 nnoremap <leader>f :ALEFix<cr>
@@ -177,8 +181,12 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 
 "vnoremap s" <esc>`>a"<esc>`<i"<esc>
 
+" in HUN keymap this is a nightmare
+autocmd FileType help nnoremap <leader>g <c-]>
+
 augroup elixir
     autocmd!
+    autocmd FileType elixir setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType elixir :imap <buffer> ;mod defmodule  do<cr>end<esc>kwhi
     autocmd FileType elixir :imap <buffer> ;fun def  do<cr>end<esc>kwhi
     autocmd FileType elixir :imap <buffer> ;case case  do<cr>_ -><cr>:ok<cr>end<esc>3kwhi
@@ -198,6 +206,8 @@ autocmd FileType css nnoremap <leader>/ _i/*<esc>A*/<esc>
 
 autocmd FileType markdown vnoremap <leader>s c{%  %}<esc>hhP
 
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
 " I think vim-go already set these up but let us see
 "autocmd FileType go :set noexpandtab copyindent preserveindent softtabstop=0 shiftwidth=4 tabstop=4
 
@@ -206,7 +216,3 @@ if has("autocmd")
         autocmd BufNewFile *.ex 0r ~/.vim/templates/elixir.ex
     augroup END
 endif
-
-function Gotags()
-    !/usr/local/bin/gotags -f tags -R .
-endfunction
