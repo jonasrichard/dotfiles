@@ -5,32 +5,18 @@ call plug#begin('~/.vim/plugged')
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
+" ALE linter
+Plug 'w0rp/ale'
+
+" Nice color scheme
+Plug 'morhetz/gruvbox'
+" Nerd-tree
+Plug 'scrooloose/nerdtree'
+" nice statusbar
 Plug 'vim-airline/vim-airline'
-
-" Nerdtree
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'Xuyuanp/nerdtree-git-plugin'
-
-" Elixir
-Plug 'elixir-lang/vim-elixir'
-
-" Git
-Plug 'tpope/vim-fugitive'
-
-" Erlang
-Plug 'vim-erlang/vim-erlang-compiler'
-Plug 'vim-erlang/vim-erlang-omnicomplete'
-Plug 'vim-erlang/vim-erlang-runtime'
-Plug 'vim-erlang/vim-erlang-tags'
-
-" Rust
-Plug 'rust-lang/rust.vim'
-
-" Ruby
-Plug 'vim-ruby/vim-ruby'
-
-" html & css
-Plug 'mattn/emmet-vim'
+Plug 'vim-airline/vim-airline-themes'
+" buffer tab
+Plug 'ap/vim-buftabline'
 
 call plug#end()
 
@@ -41,24 +27,49 @@ set autoindent
 set hls
 set number
 
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2
 
-filetype plugin on
+filetype plugin indent on
+syntax on
 
-noremap <s-left> :bprevious<cr>
-noremap <s-right> :bnext<cr>
+let mapleader=","
 
-noremap <f2> :bp\|bd #<cr>
-noremap <f5> :!ack --type erlang --nocolor <c-r><c-w><cr>
-noremap <f6> :ta <c-r><c-w><cr>
+" buffer shortcupts
+nnoremap <f2> :bp\|bd #<cr>
+nnoremap <f3> :bprevious<cr>
+nnoremap <f4> :bnext<cr>
+nnoremap <f5> :Rg <c-r><c-w><cr>
 
 " trailing space removal
-nnoremap ,<space> :%s/\s\+$/<cr>
-vnoremap ,<space> :s/\s\+$/<cr>
+nnoremap <leader><space> :%s/\s\+$/<cr>
+vnoremap <leader><space> :s/\s\+$/<cr>
 
-noremap ,n :NERDTree<cr>
+" display nerdtree
+nnoremap <leader>n :NERDTree<cr>
 
-:imap <buffer> ;mod defmodule  do<cr>end<esc>kwhi
-:imap <buffer> ;fun def  do<cr>end<esc>kwhi
-:imap <buffer> ;case case  do<cr>_ -><cr>:ok<cr>end<esc>3kwhi
+" copy visual to system clipboard
+vnoremap <leader>y "*y
+" move line up
+inoremap <c-k> <esc>yykpi
+" move line down
+inoremap <c-j> <esc>yypi
+
+" window navigation
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
+
+" window resize
+nnoremap <right> :vertical resize -5<cr>
+nnoremap <left> :vertical resize +5<cr>
+nnoremap <down> :resize -5<cr>
+nnoremap <up> :resize +5<cr>
+
+nnoremap <leader>d :ALEGoToDefinition<cr>
+nnoremap <leader>f :ALEFix<cr>
+
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+autocmd FileType help nnoremap <leader>g <c-]>
 
