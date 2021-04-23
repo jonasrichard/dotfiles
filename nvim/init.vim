@@ -20,16 +20,42 @@ Plug 'ap/vim-buftabline'
 
 call plug#end()
 
+set background=dark
+colorscheme gruvbox
+
+" Turn on line numbering
+set number
+
+" Standard tab settings
 set expandtab
 set tabstop=4
 set shiftwidth=4
 set autoindent
 set hls
-set number
-
 
 filetype plugin indent on
 syntax on
+
+" ALE Go config
+let g:ale_completion_enabled = 1
+let g:ale_fix_on_save = 1
+" let g:ale_lint_on_text_changed = 'always'
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+
+let g:ale_fixers = {
+  \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+  \ 'elixir': ['mix_format'],
+  \ 'go': ['gofmt', 'goimports'],
+  \ 'rust': ['rustfmt'],
+  \ }
+let g:ale_linters = {
+  \ 'go': ['gopls', 'golangci-lint'],
+  \ 'rust': ['analyzer'],
+  \ }
+
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 
 let mapleader=","
 
@@ -72,4 +98,3 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 autocmd FileType help nnoremap <leader>g <c-]>
-
