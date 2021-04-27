@@ -8,6 +8,9 @@ Plug 'junegunn/fzf.vim'
 " ALE linter
 Plug 'w0rp/ale'
 
+" Elixir
+Plug 'elixir-editors/vim-elixir'
+
 " Nice color scheme
 Plug 'morhetz/gruvbox'
 " Nerd-tree

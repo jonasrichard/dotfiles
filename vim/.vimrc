@@ -93,7 +93,7 @@ let g:ale_fixers = {
   \ }
 let g:ale_linters = {
   \ 'go': ['gopls', 'golangci-lint'],
-  \ 'rust': ['analyzer'],
+  \ 'rust': ['rust-analyzer'],
   \ }
 
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
