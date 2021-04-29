@@ -5,6 +5,9 @@ call plug#begin('~/.vim/plugged')
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
+" Best git plugin ever
+Plug 'tpope/vim-fugitive'
+
 " ALE linter
 Plug 'w0rp/ale'
 
