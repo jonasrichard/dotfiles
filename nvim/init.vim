@@ -23,8 +23,29 @@ Plug 'ap/vim-buftabline'
 
 call plug#end()
 
+" Theme selection and powerline symbols
 set background=dark
 colorscheme gruvbox
+let g:airline_theme='simple'
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.dirty='⚡'
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.notexists = 'Ɇ'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.whitespace = 'Ξ'
 
 " Turn on line numbering
 set number
@@ -40,6 +61,10 @@ filetype plugin indent on
 syntax on
 
 " ALE Go config
+
+let g:ale_elixir_elixir_ls_release = expand("~/Applications/elixir-ls/rel")
+let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:false}}
+
 let g:ale_completion_enabled = 1
 let g:ale_fix_on_save = 1
 " let g:ale_lint_on_text_changed = 'always'
@@ -53,9 +78,13 @@ let g:ale_fixers = {
   \ 'rust': ['rustfmt'],
   \ }
 let g:ale_linters = {
+  \ 'elixir': ['elixir-ls'],
   \ 'go': ['gopls', 'golangci-lint'],
   \ 'rust': ['analyzer'],
   \ }
+
+" TODO check what is this!
+set completeopt=menu,menuone,preview,noselect,noinsert
 
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
 highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
@@ -82,6 +111,7 @@ inoremap <c-k> <esc>yykpi
 " move line down
 inoremap <c-j> <esc>yypi
 
+nnoremap <leader>w :w<cr>
 " window navigation
 nnoremap <leader>h <C-w>h
 nnoremap <leader>j <C-w>j
@@ -100,4 +130,8 @@ nnoremap <leader>f :ALEFix<cr>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
+" Map jump key in help
 autocmd FileType help nnoremap <leader>g <c-]>
+
+" Set indent 2 for yaml
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
