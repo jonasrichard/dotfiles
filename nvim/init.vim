@@ -129,9 +129,20 @@ nnoremap <up> :resize +5<cr>
 
 nnoremap <leader>d :ALEGoToDefinition<cr>
 nnoremap <leader>f :ALEFix<cr>
+nnoremap <leader>q :ALEHover<cr>
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
+
+tnoremap <Esc> <C-\><C-n>
+
+augroup go
+    autocmd!
+    autocmd FileType go :iabbrev <buffer> _errr if err != nil {<cr>return err<cr>}<up><end>
+    autocmd FileType go :iabbrev <buffer> _errp if err != nil {<cr>panic(err)<cr>}<up><end>
+    autocmd FileType go :iabbrev <buffer> _erre if err := x(); err != nil {<cr>return err<cr>}<up><end>
+    autocmd FileType go nnoremap <localleader>/ I//<esc>
+augroup END
 
 " Map jump key in help
 autocmd FileType help nnoremap <leader>g <c-]>
