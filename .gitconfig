@@ -1,6 +1,6 @@
 [user]
 	name = Richard Jonas
-	email = richard.jonas@wallapop.com
+	email = richard.jonas.76@gmail.com
 
 [color]
     ui = true
@@ -28,6 +28,7 @@
     ps      = push
     pl      = pull
     f       = fetch
+    lo      = log --oneline --graph
     msync   = fetch origin master:master
     dsync   = fetch origin develop:develop
     report  = log --pretty=format:'[%h] %ad %aN %s' --date=short
