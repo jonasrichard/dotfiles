@@ -63,6 +63,9 @@ set hls
 filetype plugin indent on
 syntax on
 
+" Elixir specific part
+au BufRead,BufNewFile *.ex? set filetype=elixir
+
 " ALE Go config
 
 let g:ale_elixir_elixir_ls_release = expand("~/Applications/elixir-ls/rel")
