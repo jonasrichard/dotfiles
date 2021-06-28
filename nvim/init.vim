@@ -11,8 +11,14 @@ Plug 'tpope/vim-fugitive'
 " ALE linter
 Plug 'w0rp/ale'
 
+" Rust
+Plug 'cespare/vim-toml'
+
 " Elixir
 Plug 'elixir-editors/vim-elixir'
+
+" YAML
+Plug 'stephpy/vim-yaml'
 
 " Nice color scheme
 Plug 'morhetz/gruvbox'
