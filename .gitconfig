@@ -2,6 +2,15 @@
 	name = Richard Jonas
 	email = richard.jonas.76@gmail.com
 
+[push]
+	default = simple
+
+[filter "lfs"]
+	smudge = git-lfs smudge %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean %f
+
 [color]
     ui = true
 
@@ -10,9 +19,6 @@
 
 [grep]
     lineNumber
-
-[push]
-    default = simple
 
 [pull]
     rebase = true
@@ -35,11 +41,7 @@
 
 [credential]
     helper = osxkeychain
+
 [core]
 	editor = nvim
 	excludesfile = /Users/richard/.gitignore
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
