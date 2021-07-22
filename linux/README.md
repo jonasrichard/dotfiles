@@ -75,3 +75,11 @@ gzip with keeping the original file
 ```
 gzip -c inputfile > output.gz
 ```
+
+## Remote/ssh
+
+rsync files to remote host via ssh
+
+```
+rsync -Pav -e "ssh -i $HOME/.ssh/other-key" . user@host:dir
+```
