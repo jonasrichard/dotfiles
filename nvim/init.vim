@@ -143,6 +143,10 @@ nnoremap <leader>q :ALEHover<cr>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
+" url encode/decode
+vnoremap <leader>ue :!python3 -c 'import sys; from urllib import parse; print(parse.quote_plus(sys.stdin.read().strip()))'<cr>
+vnoremap <leader>ud :!python3 -c 'import sys; from urllib import parse; print(parse.unquote_plus(sys.stdin.read().strip()))'<cr>
+
 tnoremap <Esc> <C-\><C-n>
 
 augroup go
