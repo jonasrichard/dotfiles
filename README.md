@@ -1,3 +1,5 @@
+## Notes for setup dev env
+
 ### Vim setup
 
 Install fonts with
@@ -32,4 +34,13 @@ curl -o .vim/rc-airline https://raw.githubusercontent.com/jonasrichard/dotfiles/
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 yum install zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+### Brew packages
+
+```
+brew install asdf autojump bat dive duf exa fzf htop neovim ripgrep watch
+brew install graphviz rust rust-analyzer
+brew install go golangci-lint
+brew install jq k9s yq
 ```

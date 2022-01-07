@@ -79,7 +79,7 @@ let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:false}}
 
 let g:ale_completion_enabled = 1
 let g:ale_fix_on_save = 1
-" let g:ale_lint_on_text_changed = 'always'
+let g:ale_lint_on_text_changed = 0
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
 
@@ -139,6 +139,8 @@ nnoremap <up> :resize +5<cr>
 nnoremap <leader>d :ALEGoToDefinition<cr>
 nnoremap <leader>f :ALEFix<cr>
 nnoremap <leader>q :ALEHover<cr>
+nnoremap <leader>r :ALEFindReferences<cr>
+nnoremap <leader>e :ALENext<cr>
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
