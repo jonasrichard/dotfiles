@@ -8,3 +8,15 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 
 nvim +PlugUpdate +qa
 ```
+
+Install linters
+
+```bash
+brew install fzf
+
+# Install vint vimscript linter
+pip install vim-vint
+
+# Install gofumpt
+go install mvdan.cc/gofumpt@latest
+```

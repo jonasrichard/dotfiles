@@ -1,3 +1,4 @@
+scriptencoding utf-8
 
 call plug#begin('~/.vim/plugged')
 
@@ -17,6 +18,9 @@ Plug 'cespare/vim-toml'
 " Elixir
 Plug 'elixir-editors/vim-elixir'
 
+" Emmet for markup
+Plug 'mattn/emmet-vim'
+
 " YAML
 Plug 'stephpy/vim-yaml'
 
@@ -29,6 +33,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " buffer tab
 Plug 'ap/vim-buftabline'
+
+" Vader
+Plug 'junegunn/vader.vim'
 
 call plug#end()
 
@@ -64,13 +71,10 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set autoindent
-set hls
+set hlsearch
 
 filetype plugin indent on
 syntax on
-
-" Elixir specific part
-au BufRead,BufNewFile *.ex? set filetype=elixir
 
 " ALE Go config
 
@@ -86,22 +90,24 @@ let g:ale_sign_warning = '⚠'
 let g:ale_fixers = {
   \ '*': ['remove_trailing_lines', 'trim_whitespace'],
   \ 'elixir': ['mix_format'],
-  \ 'go': ['gofmt', 'goimports'],
+  \ 'go': ['gofumpt', 'goimports'],
   \ 'rust': ['rustfmt'],
   \ }
 let g:ale_linters = {
   \ 'elixir': ['elixir-ls'],
   \ 'go': ['gopls', 'golangci-lint'],
   \ 'rust': ['analyzer'],
+  \ 'vim': ['vint'],
   \ }
 
-" TODO check what is this!
+"\ 'vim': ['vint', 'ale_custom_linting_rules'],
+"
 set completeopt=menu,menuone,preview,noselect,noinsert
 
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
 highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 
-let mapleader=","
+let mapleader=','
 
 " buffer shortcupts
 nnoremap <f2> :bp\|bd #<cr>
@@ -150,6 +156,10 @@ vnoremap <leader>ue :!python3 -c 'import sys; from urllib import parse; print(pa
 vnoremap <leader>ud :!python3 -c 'import sys; from urllib import parse; print(parse.unquote_plus(sys.stdin.read().strip()))'<cr>
 
 tnoremap <Esc> <C-\><C-n>
+
+augroup elixir
+    autocmd BufRead,BufNewFile *.ex? set filetype=elixir
+augroup END
 
 augroup go
     autocmd!

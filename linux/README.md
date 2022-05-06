@@ -68,6 +68,14 @@ Show all SYN-ACK packets:
 [sending data](https://blog.packagecloud.io/eng/2017/02/06/monitoring-tuning-linux-networking-stack-sending-data/)
 [receiving data](https://blog.packagecloud.io/eng/2016/06/22/monitoring-tuning-linux-networking-stack-receiving-data/)
 
+### IP address
+
+What is my IP?
+
+```
+dig +short myip.opendns.com @resolver1.opendns.com
+```
+
 ## Shell
 
 gzip with keeping the original file
