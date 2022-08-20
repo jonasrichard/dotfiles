@@ -78,7 +78,7 @@ syntax on
 
 " ALE Go config
 
-let g:ale_elixir_elixir_ls_release = expand("~/Applications/elixir-ls/rel")
+let g:ale_elixir_elixir_ls_release = expand('~/Applications/elixir-ls/rel')
 let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:false}}
 
 let g:ale_completion_enabled = 1
@@ -142,6 +142,7 @@ nnoremap <left> :vertical resize +5<cr>
 nnoremap <down> :resize -5<cr>
 nnoremap <up> :resize +5<cr>
 
+nnoremap <leader>a :ALECodeAction<cr>
 nnoremap <leader>d :ALEGoToDefinition<cr>
 nnoremap <leader>f :ALEFix<cr>
 nnoremap <leader>q :ALEHover<cr>
@@ -170,7 +171,11 @@ augroup go
 augroup END
 
 " Map jump key in help
-autocmd FileType help nnoremap <leader>g <c-]>
+augroup help
+    autocmd FileType help nnoremap <leader>g <c-]>
+augroup END
 
 " Set indent 2 for yaml
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+augroup yaml
+    autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+augroup END
