@@ -51,6 +51,8 @@ require("packer").startup(function(use)
 
 	-- Some color scheme other then default
 	use("morhetz/gruvbox")
+
+    use("scrooloose/nerdtree")
 end)
 
 -- the first run will install packer and our plugins
@@ -163,64 +165,11 @@ vim.api.nvim_create_autocmd("CursorHold", {
 -- this removes the jitter when warnings/errors flow in
 vim.wo.signcolumn = "yes"
 
---local nvim_lsp = require('lspconfig')
---
---local on_attach = function(client, buffer)
---end
---
---nvim_lsp.rust_analyzer.setup({
---	on_attach = on_attach,
---	settings = {
---		["rust-analyzer"] = {
---			imports = {
---				granularity = {
---					group = "module",
---				},
---				prefix = "self",
---			},
---			cargo = {
---				buildScripts = {
---					enable = true,
---				},
---			},
---			procMacro = {
---				enable = true
---			},
---		}
---	}
---})
---
---local cmp = require('cmp')
---cmp.setup({
---	preselect = cmp.PreselectMode.None,
---	snippet = {
---		expand = function(args)
---			vim.fn["vsnip#anonymous"](args.body)
---		end,
---	},
---	mapping = {
---		["<C-p>"] = cmp.mapping.select_prev_item(),
---		["<C-n>"] = cmp.mapping.select_next_item(),
---		-- Add tab support
---		["<S-Tab>"] = cmp.mapping.select_prev_item(),
---		["<Tab>"] = cmp.mapping.select_next_item(),
---		["<C-d>"] = cmp.mapping.scroll_docs(-4),
---		["<C-f>"] = cmp.mapping.scroll_docs(4),
---		["<C-Space>"] = cmp.mapping.complete(),
---		["<C-e>"] = cmp.mapping.close(),
---		["<CR>"] = cmp.mapping.confirm({
---			behavior = cmp.ConfirmBehavior.Insert,
---			select = true,
---		}),
---	},
---
---	sources = {
---		{ name = 'nvim-cmp' },
---		{ name = 'vsnip' },
---		{ name = 'path' },
---		{ name = 'buffer' },
---	},
---})
+local signs = { Error = "✘", Warn = "⚠︎", Hint = "⛭", Info = "ⓘ" }
+for type, icon in pairs(signs) do
+	local hl = "DiagnosticSign" .. type
+	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
 
 vim.o.completeopt = 'menuone,noinsert,noselect'
 vim.o.number = true
@@ -253,4 +202,3 @@ vim.keymap.set('n', '<Leader>m', vim.lsp.buf.rename, bufopts)
 vim.keymap.set('n', '<Leader>r', vim.lsp.buf.references, bufopts)
 vim.keymap.set('n', '<Leader>q', vim.lsp.buf.hover, bufopts)
 vim.keymap.set('n', '<Leader>t', vim.lsp.buf.type_definition, bufopts)
-
