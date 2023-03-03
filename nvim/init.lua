@@ -103,6 +103,21 @@ local opts = {
 
 require("rust-tools").setup(opts)
 
+local lspconfig = require('lspconfig')
+
+lspconfig.gopls.setup({
+	cmd = {"gopls"},
+	filetypes = {"go", "gomod"},
+	settings = {
+		gopls = {
+			analyses = {
+				unusedparams = true,
+			},
+			staticcheck = true,
+		},
+	},
+})
+
 -- Setup Completion
 -- See https://github.com/hrsh7th/nvim-cmp#basic-configuration
 local cmp = require("cmp")
