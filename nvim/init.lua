@@ -61,16 +61,6 @@ if packer_bootstrap then
 	return
 end
 
--- Set completeopt to have a better completion experience
--- :help completeopt
--- menuone: popup even when there's only one match
--- noinsert: Do not insert text until a selection is made
--- noselect: Do not auto-select, nvim-cmp plugin will handle this for us.
-vim.o.completeopt = "menuone,noinsert,noselect"
-
--- Avoid showing extra messages when using completion
-vim.opt.shortmess = vim.opt.shortmess + "c"
-
 local function on_attach(client, buffer)
 	-- This callback is called when the LSP is atttached/enabled for this buffer
 	-- we could set keymaps related to LSP, etc here.
@@ -165,18 +155,41 @@ vim.api.nvim_create_autocmd("CursorHold", {
 -- this removes the jitter when warnings/errors flow in
 vim.wo.signcolumn = "yes"
 
+-- Change annotation icons
 local signs = { Error = "✘", Warn = "⚠︎", Hint = "⛭", Info = "ⓘ" }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
+-- Rust autocommands
+vim.api.nvim_create_augroup("Rust", {})
+
+-- Format Rust files on save
+vim.api.nvim_create_autocmd({"BufWritePre"}, {
+    group = "Rust",
+    pattern = {"*.rs"},
+    callback = function(ev)
+        vim.lsp.buf.format()
+    end
+})
+
+-- Set completeopt to have a better completion experience
+-- :help completeopt
+-- menuone: popup even when there's only one match
+-- noinsert: Do not insert text until a selection is made
+-- noselect: Do not auto-select, nvim-cmp plugin will handle this for us.
 vim.o.completeopt = 'menuone,noinsert,noselect'
+
+-- Avoid showing extra messages when using completion
+vim.opt.shortmess = vim.opt.shortmess + "c"
+
 vim.o.number = true
 
 vim.cmd('colorscheme gruvbox')
 
 vim.g.mapleader = ','
+
 vim.keymap.set('n', '<Leader>n', '<Cmd>NERDTree<CR>')
 vim.keymap.set('n', '<F2>', '<Cmd>bp|bd #<CR>')
 vim.keymap.set('n', '<F3>', '<Cmd>bprevious<CR>')
