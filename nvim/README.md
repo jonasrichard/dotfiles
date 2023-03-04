@@ -23,10 +23,10 @@ go install mvdan.cc/gofumpt@latest
 
 ### Migrating to lua
 
-Neovim has `.config/nvim...init.lua` as a config file and a `plugins.lua` in the `.config/nvim/lua/plugins.lua` path.
+Neovim has `.config/nvim/init.lua` as a config file and `lua` directory as `.config/nvim/lua/`.
 
 ```
-nvim -u nvim/init.lua
+nvim
 # then in vim
 :PackerInstall
 ```
