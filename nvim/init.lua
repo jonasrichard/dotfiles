@@ -61,10 +61,10 @@ require("packer").startup(function(use)
 end)
 
 -- the first run will install packer and our plugins
-if packer_bootstrap then
-	require("packer").sync()
-	return
-end
+--if packer_bootstrap then
+--	require("packer").sync()
+--	return
+--end
 
 require('rust-config')
 require('lsp-config')
@@ -148,3 +148,9 @@ vim.keymap.set('n', '<Leader>l', '<c-w>l')
 vim.keymap.set('v', '<Leader>y', '"*y')
 -- Replace without spoiling the yank buffer
 vim.keymap.set('x', '<Leader>p', '\"_dP')
+
+-- Telescope mappings
+-- search files and search grep
+vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, {})
+vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, {})
+vim.keymap.set('n', '<C-p>', require('telescope.builtin').git_files, {})
