@@ -137,13 +137,22 @@ vim.keymap.set('n', '<F2>', '<Cmd>bp|bd #<CR>')
 vim.keymap.set('n', '<F3>', '<Cmd>bprevious<CR>')
 vim.keymap.set('n', '<F4>', '<Cmd>bnext<CR>')
 vim.keymap.set('n', '<F5>', '<Cmd>Rg <c-r><c-w><CR>')
+-- Close Quickfix window
+vim.keymap.set('n', '<Leader>c', '<Cmd>cclose<CR>')
 
 vim.keymap.set('n', '<Leader>w', '<Cmd>w<CR>')
 
+-- Move between windows
 vim.keymap.set('n', '<Leader>h', '<c-w>h')
 vim.keymap.set('n', '<Leader>j', '<c-w>j')
 vim.keymap.set('n', '<Leader>k', '<c-w>k')
 vim.keymap.set('n', '<Leader>l', '<c-w>l')
+
+-- Resize windows
+vim.keymap.set('n', '<up>', '<Cmd>resize +5<CR>')
+vim.keymap.set('n', '<down>', '<Cmd>resize -5<CR>')
+vim.keymap.set('n', '<left>', '<Cmd>vertical resize -5<CR>')
+vim.keymap.set('n', '<right>', '<Cmd>vertical resize +5<CR>')
 
 vim.keymap.set('v', '<Leader>y', '"*y')
 -- Replace without spoiling the yank buffer
