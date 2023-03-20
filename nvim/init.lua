@@ -52,6 +52,9 @@ require("packer").startup(function(use)
 	-- Some color scheme other then default
 	use("morhetz/gruvbox")
 
+    -- Git plugin
+    use("tpope/vim-fugitive")
+
     -- NerdTree
     use("scrooloose/nerdtree")
 
