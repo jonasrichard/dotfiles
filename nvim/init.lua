@@ -17,6 +17,12 @@ require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 	-- Collection of common configurations for the Nvim LSP client
 	use("neovim/nvim-lspconfig")
+
+	-- Treesitter plugin
+	use({
+		"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"
+	})
+
 	-- Visualize lsp progress
 	use({
 		"j-hui/fidget.nvim",
