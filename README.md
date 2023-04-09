@@ -32,6 +32,14 @@ Install autojump
 brew install autojump
 ```
 
+Load `asdf` in this way to avoid that in shims there will be canonical path with asdf versions wired.
+So after an upgrade everything breaks.
+
+```
+# .zshrc
+. "$(brew --prefix asdf)/libexec/asdf.sh"
+```
+
 ### Quick remote env setup
 
 ```
