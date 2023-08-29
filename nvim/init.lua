@@ -1,62 +1,65 @@
 -- ensure the packer plugin manager is installed
 local ensure_packer = function()
-	local fn = vim.fn
-	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-	if fn.empty(fn.glob(install_path)) > 0 then
-		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-		vim.cmd([[packadd packer.nvim]])
-		return true
-	end
-	return false
+    local fn = vim.fn
+    local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+    if fn.empty(fn.glob(install_path)) > 0 then
+        fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+        vim.cmd([[packadd packer.nvim]])
+        return true
+    end
+    return false
 end
 
 local packer_bootstrap = ensure_packer()
 
 require("packer").startup(function(use)
-	-- Packer can manage itself
-	use("wbthomason/packer.nvim")
-	-- Collection of common configurations for the Nvim LSP client
-	use("neovim/nvim-lspconfig")
+    -- Packer can manage itself
+    use("wbthomason/packer.nvim")
+    -- Collection of common configurations for the Nvim LSP client
+    use("neovim/nvim-lspconfig")
 
-	-- Treesitter plugin
-	use({
-		"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"
-	})
+    -- Treesitter plugin
+    use({
+        "nvim-treesitter/nvim-treesitter", run = ":TSUpdate"
+    })
 
-	-- Visualize lsp progress
-	use({
-		"j-hui/fidget.nvim",
-		config = function()
-			require("fidget").setup()
-		end
-	})
+    use('mfussenegger/nvim-dap')
 
-	-- Autocompletion framework
-	use("hrsh7th/nvim-cmp")
-	use({
-		-- cmp LSP completion
-		"hrsh7th/cmp-nvim-lsp",
-		-- cmp Snippet completion
-		"hrsh7th/cmp-vsnip",
-		-- cmp Path completion
-		"hrsh7th/cmp-path",
-		"hrsh7th/cmp-buffer",
-		after = { "hrsh7th/nvim-cmp" },
-		requires = { "hrsh7th/nvim-cmp" },
-	})
-	-- See hrsh7th other plugins for more great completion sources!
-	-- Snippet engine
-	use('hrsh7th/vim-vsnip')
-	-- Adds extra functionality over rust analyzer
-	use("simrat39/rust-tools.nvim")
+    -- Visualize lsp progress
+    use({
+        "j-hui/fidget.nvim",
+        tag = "legacy",
+        config = function()
+            require("fidget").setup()
+        end
+    })
 
-	-- Optional
-	use("nvim-lua/popup.nvim")
-	use("nvim-lua/plenary.nvim")
-	use("nvim-telescope/telescope.nvim")
+    -- Autocompletion framework
+    use("hrsh7th/nvim-cmp")
+    use({
+        -- cmp LSP completion
+        "hrsh7th/cmp-nvim-lsp",
+        -- cmp Snippet completion
+        "hrsh7th/cmp-vsnip",
+        -- cmp Path completion
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-buffer",
+        after = { "hrsh7th/nvim-cmp" },
+        requires = { "hrsh7th/nvim-cmp" },
+    })
+    -- See hrsh7th other plugins for more great completion sources!
+    -- Snippet engine
+    use('hrsh7th/vim-vsnip')
+    -- Adds extra functionality over rust analyzer
+    use("simrat39/rust-tools.nvim")
 
-	-- Some color scheme other then default
-	use("morhetz/gruvbox")
+    -- Optional
+    use("nvim-lua/popup.nvim")
+    use("nvim-lua/plenary.nvim")
+    use("nvim-telescope/telescope.nvim")
+
+    -- Some color scheme other then default
+    use("morhetz/gruvbox")
 
     -- Git plugin
     use("tpope/vim-fugitive")
@@ -87,10 +90,10 @@ vim.opt.updatetime = 100
 -- Show diagnostic popup on cursor hover
 local diag_float_grp = vim.api.nvim_create_augroup("DiagnosticFloat", { clear = true })
 vim.api.nvim_create_autocmd("CursorHold", {
-	callback = function()
-		vim.diagnostic.open_float(nil, { focusable = false })
-	end,
-	group = diag_float_grp,
+    callback = function()
+        vim.diagnostic.open_float(nil, { focusable = false })
+    end,
+    group = diag_float_grp,
 })
 
 -- have a fixed column for the diagnostics to appear in
@@ -100,8 +103,8 @@ vim.wo.signcolumn = "yes"
 -- Change annotation icons
 local signs = { Error = "✘", Warn = "⚠︎", Hint = "⛭", Info = "ⓘ" }
 for type, icon in pairs(signs) do
-	local hl = "DiagnosticSign" .. type
-	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
 -- Rust autocommands
@@ -172,3 +175,8 @@ vim.keymap.set('x', '<Leader>p', '\"_dP')
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, {})
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, {})
 vim.keymap.set('n', '<C-p>', require('telescope.builtin').git_files, {})
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+    pattern = "help",
+    command = "lua vim.api.nvim_set_keymap('n', '<leader>g', '<C-]>', { noremap = true, silent = true })",
+})
