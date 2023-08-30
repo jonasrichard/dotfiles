@@ -170,6 +170,9 @@ vim.keymap.set('v', '<Leader>y', '"*y')
 -- Replace without spoiling the yank buffer
 vim.keymap.set('x', '<Leader>p', '\"_dP')
 
+vim.keymap.set('v', '<Leader>ue', '!python3 -c "import sys; from urllib import parse; print(parse.quote_plus(sys.stdin.read().strip()))"<cr>')
+vim.keymap.set('v', '<Leader>ud', '!python3 -c "import sys; from urllib import parse; print(parse.unquote_plus(sys.stdin.read().strip()))"<cr>')
+
 -- Telescope mappings
 -- search files and search grep
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, {})
