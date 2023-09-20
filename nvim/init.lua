@@ -10,7 +10,8 @@ local ensure_packer = function()
     return false
 end
 
-local packer_bootstrap = ensure_packer()
+-- This line is needed for installing Packer
+-- local packer_bootstrap = ensure_packer()
 
 require("packer").startup(function(use)
     -- Packer can manage itself
@@ -81,7 +82,6 @@ end)
 require('rust-config')
 require('lsp-config')
 require('completion')
-require('telescope-config')
 
 -- Set updatetime for CursorHold
 -- 300ms of no cursor movement to trigger CursorHold
@@ -170,14 +170,15 @@ vim.keymap.set('v', '<Leader>y', '"*y')
 -- Replace without spoiling the yank buffer
 vim.keymap.set('x', '<Leader>p', '\"_dP')
 
+
+-- Telescope keys (not sure why in the separate file they don't run)
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<Leader>sf', function() builtin.find_files({file_ignore_patterns = {"vendor"}}) end, {})
+vim.keymap.set('n', '<Leader>sg', function() builtin.live_grep({file_ignore_patterns = {"vendor"}}) end, {})
+
+
 vim.keymap.set('v', '<Leader>ue', '!python3 -c "import sys; from urllib import parse; print(parse.quote_plus(sys.stdin.read().strip()))"<cr>')
 vim.keymap.set('v', '<Leader>ud', '!python3 -c "import sys; from urllib import parse; print(parse.unquote_plus(sys.stdin.read().strip()))"<cr>')
-
--- Telescope mappings
--- search files and search grep
-vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, {})
-vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, {})
-vim.keymap.set('n', '<C-p>', require('telescope.builtin').git_files, {})
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
     pattern = "help",
