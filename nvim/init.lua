@@ -175,10 +175,20 @@ vim.keymap.set('x', '<Leader>p', '\"_dP')
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<Leader>sf', function() builtin.find_files({file_ignore_patterns = {"vendor"}}) end, {})
 vim.keymap.set('n', '<Leader>sg', function() builtin.live_grep({file_ignore_patterns = {"vendor"}}) end, {})
+vim.keymap.set('n', '<Leader>sr', builtin.lsp_references, {})
 
 
 vim.keymap.set('v', '<Leader>ue', '!python3 -c "import sys; from urllib import parse; print(parse.quote_plus(sys.stdin.read().strip()))"<cr>')
 vim.keymap.set('v', '<Leader>ud', '!python3 -c "import sys; from urllib import parse; print(parse.unquote_plus(sys.stdin.read().strip()))"<cr>')
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+    pattern = "go",
+    callback = function(ev)
+        vim.cmd("iabbrev _ifp if err != nil {<cr>panic(err)<cr>}")
+        vim.cmd("iabbrev _ifr if err != nil {<cr>return err<cr>}")
+        vim.cmd("iabbrev _ife if err := x(); err != nil {<cr>return err<cr>}")
+    end
+})
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
     pattern = "help",
