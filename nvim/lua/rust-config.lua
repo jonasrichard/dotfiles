@@ -38,3 +38,15 @@ local opts = {
 }
 
 require("rust-tools").setup(opts)
+
+-- Rust autocommands
+vim.api.nvim_create_augroup("Rust", {})
+
+-- Format Rust files on save
+vim.api.nvim_create_autocmd({"BufWritePre"}, {
+    group = "Rust",
+    pattern = {"*.rs"},
+    callback = function(ev)
+        vim.lsp.buf.format()
+    end
+})
