@@ -52,7 +52,7 @@ require("packer").startup(function(use)
     -- Snippet engine
     use('hrsh7th/vim-vsnip')
     -- Adds extra functionality over rust analyzer
-    use("simrat39/rust-tools.nvim")
+    use("mrcjkb/rustaceanvim")
 
     -- Optional
     use("nvim-lua/popup.nvim")
@@ -67,6 +67,10 @@ require("packer").startup(function(use)
 
     -- NerdTree
     use("scrooloose/nerdtree")
+
+    -- Rust
+    -- use("neovim/nvim-lspconfig")
+    -- use("simrat39/rust-tools.nvim")
 
     use("vim-airline/vim-airline")
     use("vim-airline/vim-airline-themes")
@@ -106,7 +110,7 @@ vim.api.nvim_create_autocmd("CursorHold", {
 vim.wo.signcolumn = "yes"
 
 -- Change annotation icons
-local signs = { Error = "✘", Warn = "⚠︎", Hint = "⛭", Info = "ⓘ" }
+local signs = { Error = "✘", Warn = "⚠︎", Hint = "☼", Info = "ⓘ" }
 for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
