@@ -24,8 +24,6 @@ require("packer").startup(function(use)
         "nvim-treesitter/nvim-treesitter", run = ":TSUpdate"
     })
 
-    -- use('mfussenegger/nvim-dap')
-
     -- Visualize lsp progress
     use({
         "j-hui/fidget.nvim",
@@ -67,10 +65,6 @@ require("packer").startup(function(use)
 
     -- NerdTree
     use("scrooloose/nerdtree")
-
-    -- Rust
-    -- use("neovim/nvim-lspconfig")
-    -- use("simrat39/rust-tools.nvim")
 
     use("vim-airline/vim-airline")
     use("vim-airline/vim-airline-themes")
@@ -115,6 +109,18 @@ for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
+
+-- Rust autocommands
+vim.api.nvim_create_augroup("Rust", {})
+
+-- Format Rust files on save
+vim.api.nvim_create_autocmd({"BufWritePre"}, {
+    group = "Rust",
+    pattern = {"*.rs"},
+    callback = function(ev)
+        vim.lsp.buf.format()
+    end
+})
 
 -- Set completeopt to have a better completion experience
 -- :help completeopt
