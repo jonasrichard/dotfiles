@@ -27,7 +27,6 @@ require("packer").startup(function(use)
     -- Visualize lsp progress
     use({
         "j-hui/fidget.nvim",
-        tag = "legacy",
         config = function()
             require("fidget").setup()
         end
@@ -49,7 +48,8 @@ require("packer").startup(function(use)
     -- See hrsh7th other plugins for more great completion sources!
     -- Snippet engine
     use('hrsh7th/vim-vsnip')
-    -- Adds extra functionality over rust analyzer
+
+    -- Rust analyzer
     use("mrcjkb/rustaceanvim")
 
     -- Optional
@@ -79,6 +79,17 @@ end)
 
 -- Modules map to leader key
 vim.g.mapleader = ','
+
+require("nvim-treesitter").setup({
+    ensure_installed = { "erlang", "elixir" },
+    auto_install = true,
+    sync_install = true,
+
+    highlight = {
+        enable = true,
+        disable = { "go", "rust" },
+    },
+})
 
 require('rust-config')
 require('lsp-config')
@@ -191,4 +202,9 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 vim.api.nvim_create_autocmd({ "FileType" }, {
     pattern = "go",
     command = "iabbrev _errp if err != nil {<cr>panic(err)<cr>}<cr>",
+})
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+    pattern = "go",
+    command = "iabbrev _errr if err != nil {<cr>return err<cr>}<cr>",
 })
