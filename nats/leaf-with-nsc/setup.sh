@@ -52,3 +52,19 @@ nats context save main_consumer --nsc "nsc://main_operator/CONSUMER/consumer" --
 # TODO Replace leaf node remote accounts to the current ones
 
 # TODO Start leaf cluster
+
+# mean cluster                                 leaf cluster
+# subject            stream                    subject                            stream
+# temperature.UK  -> temperatures              main.publisher.temperature.UK  ->  leaf-temperatures
+
+nats --context=main_publisher stream add --config main-stream.json --js-domain main
+
+nsc add export --account PUBLISHER --name API-PUBLISHER --service --response-type Stream --subject '$JS.main.API.CONSUMER.>'
+nsc add export --account PUBLISHER --name FC-PUBLISHER --service --response-type Stream --subject '$JS.FC.>'
+nsc add export --account PUBLISHER --name Data-PUBLISHER --service --response-type Stream --subject 'temperature.>'
+
+nsc add import --account CONSUMER --src-account PUBLISHER --name Remote-API-PUBLISHER --service --remote-subject '$JS.main.API.CONSUMER.>' --local-subject 'JS.publisher@main.API.CONSUMER.>'
+nsc add import --account CONSUMER --src-account PUBLISHER --name Remote-FC-PUBLISHER --service --remote-subject '$JS.FC.>'
+nsc add import --account CONSUMER --src-account PUBLISHER --name Remote-Data-PUBLISHER --remote-subject 'temperature.>' --local-subject 'main.publisher.temperature.>'
+
+nats --context=main_consumer stream add --config leaf-stream.json --js-domain leaf

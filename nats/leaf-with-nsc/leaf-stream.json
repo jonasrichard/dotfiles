@@ -1,0 +1,26 @@
+{
+  "name": "leaf-temperatures",
+  "retention": "limits",
+  "max_consumers": -1,
+  "max_msgs_per_subject": 0,
+  "max_msgs": -1,
+  "max_bytes": -1,
+  "max_age": 0,
+  "max_msg_size": -1,
+  "storage": "file",
+  "discard": "old",
+  "num_replicas": 1,
+  "mirror": {
+    "name": "temperatures",
+    "external": {
+      "api": "JS.publisher@main.API",
+      "deliver": "main.publisher"
+    }
+  },
+  "sealed": false,
+  "deny_delete": false,
+  "deny_purge": false,
+  "allow_rollup_hdrs": false,
+  "allow_direct": true,
+  "mirror_direct": false
+}
