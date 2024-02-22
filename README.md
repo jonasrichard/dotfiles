@@ -12,8 +12,9 @@ Install fonts with
 
 ```bash
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
-p10k
 ```
+
+Set `ZSH_THEME="powerlevel10k/powerlevel10k"` in `~/.zshrc`. Start a new shell and `p10k configure` runs automatically.
 
 Copy `rc-airline` to `.vim`
 
