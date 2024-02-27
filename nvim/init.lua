@@ -181,6 +181,7 @@ vim.keymap.set('n', '<right>', '<Cmd>vertical resize +5<CR>')
 vim.keymap.set('v', '<Leader>y', '"*y')
 -- Replace without spoiling the yank buffer
 vim.keymap.set('x', '<Leader>p', '\"_dP')
+vim.keymap.set('n', '<Leader>yl', function() vim.fn.setreg('*', vim.fn.getline('.')) end)
 
 vim.keymap.set('v', '<Leader>ue', '!python3 -c "import sys; from urllib import parse; print(parse.quote_plus(sys.stdin.read().strip()))"<cr>')
 vim.keymap.set('v', '<Leader>ud', '!python3 -c "import sys; from urllib import parse; print(parse.unquote_plus(sys.stdin.read().strip()))"<cr>')
