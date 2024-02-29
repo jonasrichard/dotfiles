@@ -6,6 +6,13 @@ Install Oh my zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
+### Install Nerd font
+
+```
+brew tap homebrew/cask-fonts
+brew install font-hack-nerd-font
+```
+
 ### Vim setup
 
 Install fonts with
@@ -15,8 +22,6 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~
 ```
 
 Set `ZSH_THEME="powerlevel10k/powerlevel10k"` in `~/.zshrc`. Start a new shell and `p10k configure` runs automatically.
-
-Copy `rc-airline` to `.vim`
 
 ### zsh setup
 
