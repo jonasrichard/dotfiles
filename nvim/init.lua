@@ -10,6 +10,7 @@ require('plugins')
 require('settings')
 require('keymaps')
 
+require('plugins.aerial')
 require('plugins.bufferline')
 require('plugins.cmp')
 require('plugins.lspconfig')

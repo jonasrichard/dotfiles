@@ -74,6 +74,9 @@ require('packer').startup(function(use)
     -- https://neovimcraft.com/plugin/akinsho/bufferline.nvim
     use({ 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' })
 
+    -- Outline plugin
+    use('stevearc/aerial.nvim')
+
     -- Auto close tags
     use('windwp/nvim-ts-autotag')
 

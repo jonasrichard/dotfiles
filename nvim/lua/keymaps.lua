@@ -1,8 +1,8 @@
 -- Modules map to leader key
 vim.g.mapleader = ','
 
---vim.keymap.set('n', '<Leader>n', '<Cmd>NERDTree<CR>')
 vim.keymap.set('n', '<Leader>n', '<Cmd>NvimTreeToggle<cr>')
+vim.keymap.set('n', '<Leader>o', '<Cmd>AerialToggle<cr>')
 
 vim.keymap.set('n', '<F2>', '<Cmd>bp|bd #<CR>')
 vim.keymap.set('n', '<F3>', '<Cmd>bprevious<CR>')
