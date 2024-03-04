@@ -20,10 +20,10 @@ vim.keymap.set('n', '<Leader>k', '<c-w>k')
 vim.keymap.set('n', '<Leader>l', '<c-w>l')
 
 -- Resize windows
-vim.keymap.set('n', '<up>', '<Cmd>resize +5<CR>')
-vim.keymap.set('n', '<down>', '<Cmd>resize -5<CR>')
-vim.keymap.set('n', '<left>', '<Cmd>vertical resize -5<CR>')
-vim.keymap.set('n', '<right>', '<Cmd>vertical resize +5<CR>')
+vim.keymap.set('n', '<up>', '<Cmd>resize -5<CR>')
+vim.keymap.set('n', '<down>', '<Cmd>resize +5<CR>')
+vim.keymap.set('n', '<left>', '<Cmd>vertical resize +5<CR>')
+vim.keymap.set('n', '<right>', '<Cmd>vertical resize -5<CR>')
 
 vim.keymap.set('v', '<Leader>y', '"*y')
 -- Replace without spoiling the yank buffer

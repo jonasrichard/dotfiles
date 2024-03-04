@@ -12,6 +12,8 @@ vim.opt.completeopt = 'menuone,noinsert,noselect'
 -- Avoid showing extra messages when using completion
 vim.opt.shortmess = vim.opt.shortmess + "c"
 
+vim.opt.termguicolors = true
+
 vim.opt.number = true
 
 vim.opt.tabstop = 4
