@@ -50,6 +50,10 @@ require('packer').startup(function(use)
     -- Snippet engine
     use('hrsh7th/vim-vsnip')
 
+    -- Debug
+    use('mfussenegger/nvim-dap')
+    use('leoluz/nvim-dap-go')
+
     -- Adds extra functionality over rust analyzer
     use('mrcjkb/rustaceanvim')
 
