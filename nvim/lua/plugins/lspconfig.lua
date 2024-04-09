@@ -1,5 +1,11 @@
 local lspconfig = require('lspconfig')
 
+lspconfig.emmet_language_server.setup({
+    filetypes = { "css", "html", "javascript", "typescriptreact" },
+    showAbbreviationSuggestions = true,
+    showAbbreviationSuggestions = "always",
+})
+
 lspconfig.gopls.setup({
 	cmd = {"gopls"},
 	filetypes = {"go", "gomod"},

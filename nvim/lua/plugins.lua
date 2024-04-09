@@ -84,6 +84,9 @@ require('packer').startup(function(use)
     -- Auto close tags
     use('windwp/nvim-ts-autotag')
 
+    -- emmet plugin
+    use('olrtg/nvim-emmet')
+
     use('sindrets/diffview.nvim')
 
     -- Diffing directories

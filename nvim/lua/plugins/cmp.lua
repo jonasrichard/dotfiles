@@ -1,6 +1,7 @@
 -- Setup Completion
 -- See https://github.com/hrsh7th/nvim-cmp#basic-configuration
 local cmp = require("cmp")
+
 cmp.setup({
 	preselect = cmp.PreselectMode.None,
 	snippet = {
