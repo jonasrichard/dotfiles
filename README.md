@@ -13,6 +13,9 @@ brew tap homebrew/cask-fonts
 brew install font-hack-nerd-font
 ```
 
+Or for Ubuntu, download the font from [here](https://www.nerdfonts.com/font-downloads).
+And copy it to `~/.fonts/` and reload the font cache `fc-cache -fv`.
+
 ### Vim setup
 
 Install fonts with
