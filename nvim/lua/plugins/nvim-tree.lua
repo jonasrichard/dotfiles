@@ -1,6 +1,10 @@
 require('nvim-web-devicons').setup({})
 
 require('nvim-tree').setup({
+    git = {
+        show_on_dirs = false,
+        show_on_open_dirs = false,
+    },
     hijack_cursor = false,
     renderer = {
         indent_markers = {
@@ -11,6 +15,6 @@ require('nvim-tree').setup({
     diagnostics = {
         enable = false,
         show_on_dirs = false,
-        show_on_open_dirs = true,
+        show_on_open_dirs = false,
     }
 })
