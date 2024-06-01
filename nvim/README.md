@@ -12,7 +12,7 @@ nvim +PlugUpdate +qa
 Install linters
 
 ```bash
-brew install fzf
+brew install fzf lua-language-server
 
 # Install vint vimscript linter
 pip install vim-vint
