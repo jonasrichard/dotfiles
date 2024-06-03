@@ -38,8 +38,11 @@ lspconfig.lua_ls.setup({
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
+<<<<<<< Updated upstream
     callback = function()
         vim.keymap.set('n', '<Leader>a', vim.lsp.buf.code_action)
+        vim.keymap.set('n', '<Leader>ci', vim.lsp.buf.incoming_calls)
+        vim.keymap.set('n', '<Leader>co', vim.lsp.buf.outgoing_calls)
         vim.keymap.set('n', '<Leader>d', vim.lsp.buf.definition)
         vim.keymap.set('n', '<Leader>e', vim.lsp.buf.hover)
         vim.keymap.set('n', '<Leader>f', vim.lsp.buf.format)
