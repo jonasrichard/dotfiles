@@ -55,7 +55,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
         vim.keymap.set('n', '<Leader>en', vim.diagnostic.goto_next)
         vim.keymap.set('n', '<Leader>ep', vim.diagnostic.goto_prev)
-
     end
 })
 
