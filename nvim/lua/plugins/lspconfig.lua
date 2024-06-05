@@ -38,7 +38,6 @@ lspconfig.lua_ls.setup({
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
-<<<<<<< Updated upstream
     callback = function()
         vim.keymap.set('n', '<Leader>a', vim.lsp.buf.code_action)
         vim.keymap.set('n', '<Leader>ci', vim.lsp.buf.incoming_calls)
@@ -51,6 +50,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<Leader>r', vim.lsp.buf.references)
         vim.keymap.set('n', '<Leader>q', vim.lsp.buf.hover)
         vim.keymap.set('n', '<Leader>t', vim.lsp.buf.type_definition)
+
+        vim.api.nvim_set_hl(0, '@lsp.type.comment.rust', {})
+
+        vim.keymap.set('n', '<Leader>en', vim.diagnostic.goto_next)
+        vim.keymap.set('n', '<Leader>ep', vim.diagnostic.goto_prev)
+
     end
 })
 
@@ -58,6 +63,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 local signs = { Error = "✘", Warn = "⚠︎", Hint = "☼", Info = "ⓘ" }
 for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
+    -- This is deprecated, use vim.diagnostic.config() instead
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
