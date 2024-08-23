@@ -13,14 +13,14 @@ require('keymaps')
 require('plugins.aerial')
 require('plugins.bufferline')
 require('plugins.cmp')
-require('plugins.emmet')
+--require('plugins.emmet')
 require('plugins.lspconfig')
 require('plugins.lualine')
 require('plugins.nvim-dap')
 require('plugins.nvim-dap-go')
 require('plugins.nvim-tree')
 require('plugins.nvim-treesitter')
-require('plugins.rustaceanvim')
+--require('plugins.rustaceanvim')
 require('plugins.telescope')
 
 -- Elixir LS setup
@@ -28,7 +28,7 @@ require('plugins.telescope')
 local elixir = require("elixir")
 local elixirls = require("elixir.elixirls")
 
-require("elixir").setup({
+elixir.setup({
     elixirls = {
         cmd = "/Users/richardjonas/projects/elixir/elixir-ls/release/language_server.sh",
     }

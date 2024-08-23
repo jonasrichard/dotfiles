@@ -54,7 +54,8 @@ require('packer').startup(function(use)
     use('leoluz/nvim-dap-go')
 
     -- Adds extra functionality over rust analyzer
-    use('mrcjkb/rustaceanvim')
+    -- For now I will use rust-analyzer with standard lsp
+    -- use('mrcjkb/rustaceanvim')
 
     -- Elixir
     use('elixir-tools/elixir-tools.nvim')

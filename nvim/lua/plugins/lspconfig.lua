@@ -37,6 +37,25 @@ lspconfig.lua_ls.setup({
     }
 })
 
+lspconfig.rust_analyzer.setup({
+    settings = {
+        ["rust_analyzer"] = {
+        },
+    },
+})
+
+-- Rust autocommands
+vim.api.nvim_create_augroup("Rust", {})
+
+-- Format Rust files on save
+vim.api.nvim_create_autocmd({"BufWritePre"}, {
+    group = "Rust",
+    pattern = {"*.rs"},
+    callback = function()
+        vim.lsp.buf.format()
+    end
+})
+
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function()
         vim.keymap.set('n', '<Leader>a', vim.lsp.buf.code_action)
@@ -65,4 +84,3 @@ for type, icon in pairs(signs) do
     -- This is deprecated, use vim.diagnostic.config() instead
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
-
