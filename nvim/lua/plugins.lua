@@ -65,8 +65,8 @@ require('packer').startup(function(use)
     use('nvim-lua/plenary.nvim')
     use('nvim-telescope/telescope.nvim')
 
-    -- Some color scheme other then default
-    use('morhetz/gruvbox')
+    -- Gruvbox colorscheme
+    use('ellisonleao/gruvbox.nvim')
 
     -- Git plugin
     use('tpope/vim-fugitive')

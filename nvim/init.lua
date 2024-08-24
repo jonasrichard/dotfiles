@@ -48,6 +48,10 @@ vim.api.nvim_create_autocmd("CursorHold", {
 -- this removes the jitter when warnings/errors flow in
 vim.wo.signcolumn = "yes"
 
+require('gruvbox').setup({
+    contrast = "soft",
+})
+
 vim.cmd('colorscheme gruvbox')
 
 vim.api.nvim_create_autocmd({ "FileType" }, {

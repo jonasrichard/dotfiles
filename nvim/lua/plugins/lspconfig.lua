@@ -44,6 +44,10 @@ lspconfig.rust_analyzer.setup({
     },
 })
 
+-- Rust lsp semantic token highlighting
+vim.api.nvim_set_hl(0, '@lsp.mod.documentation.rust', { link = 'GruvboxOrange' })
+vim.api.nvim_set_hl(0, '@lsp.typemod.comment.documentation.rust', { link = 'GruvboxOrange' })
+
 -- Rust autocommands
 vim.api.nvim_create_augroup("Rust", {})
 
@@ -70,8 +74,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<Leader>q', vim.lsp.buf.hover)
         vim.keymap.set('n', '<Leader>t', vim.lsp.buf.type_definition)
 
-        vim.api.nvim_set_hl(0, '@lsp.type.comment.rust', {})
-
         vim.keymap.set('n', '<Leader>en', vim.diagnostic.goto_next)
         vim.keymap.set('n', '<Leader>ep', vim.diagnostic.goto_prev)
     end
@@ -84,3 +86,4 @@ for type, icon in pairs(signs) do
     -- This is deprecated, use vim.diagnostic.config() instead
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
+
