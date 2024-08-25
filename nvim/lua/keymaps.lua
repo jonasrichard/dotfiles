@@ -8,6 +8,10 @@ vim.keymap.set('n', '<F2>', '<Cmd>bp|bd #<CR>')
 vim.keymap.set('n', '<F3>', '<Cmd>bprevious<CR>')
 vim.keymap.set('n', '<F4>', '<Cmd>bnext<CR>')
 vim.keymap.set('n', '<F5>', '<Cmd>Rg <c-r><c-w><CR>')
+
+-- Open diagnostics window
+vim.keymap.set('n', '<leader>oq', vim.diagnostic.setloclist, { desc = "[O]pen [Q]uickfix window" })
+
 -- Close Quickfix window
 vim.keymap.set('n', '<Leader>c', '<Cmd>cclose<CR>')
 
