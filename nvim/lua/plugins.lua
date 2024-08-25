@@ -52,6 +52,11 @@ require('packer').startup(function(use)
     -- Debug
     use('mfussenegger/nvim-dap')
     use('leoluz/nvim-dap-go')
+    use('rcarriga/nvim-dap-ui')
+    use('theHamsta/nvim-dap-virtual-text')
+
+    -- Check what it is
+    use('nvim-neotest/nvim-nio')
 
     -- Adds extra functionality over rust analyzer
     -- For now I will use rust-analyzer with standard lsp
