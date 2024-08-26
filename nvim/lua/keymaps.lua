@@ -15,7 +15,10 @@ vim.keymap.set('n', '<leader>oq', vim.diagnostic.setloclist, { desc = "[O]pen [Q
 -- Close Quickfix window
 vim.keymap.set('n', '<Leader>c', '<Cmd>cclose<CR>')
 
+-- Quicker save
 vim.keymap.set('n', '<Leader>w', '<Cmd>w<CR>')
+
+vim.keymap.set('n', '<Leader>?', function() require('which-key').show({ global = false }) end, { desc = 'Show key mapping' })
 
 -- Move between windows
 vim.keymap.set('n', '<Leader>h', '<c-w>h')

@@ -58,9 +58,8 @@ require('packer').startup(function(use)
     -- Check what it is
     use('nvim-neotest/nvim-nio')
 
-    -- Adds extra functionality over rust analyzer
-    -- For now I will use rust-analyzer with standard lsp
-    -- use('mrcjkb/rustaceanvim')
+    -- Document key mappings
+    use('folke/which-key.nvim')
 
     -- Elixir
     use('elixir-tools/elixir-tools.nvim')

@@ -62,20 +62,19 @@ vim.api.nvim_create_autocmd({"BufWritePre"}, {
 
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function()
-        vim.keymap.set('n', '<Leader>a', vim.lsp.buf.code_action)
-        vim.keymap.set('n', '<Leader>ci', vim.lsp.buf.incoming_calls)
-        vim.keymap.set('n', '<Leader>co', vim.lsp.buf.outgoing_calls)
-        vim.keymap.set('n', '<Leader>d', vim.lsp.buf.definition)
-        vim.keymap.set('n', '<Leader>e', vim.lsp.buf.hover)
-        vim.keymap.set('n', '<Leader>f', vim.lsp.buf.format)
-        vim.keymap.set('n', '<Leader>i', vim.lsp.buf.implementation)
-        vim.keymap.set('n', '<Leader>m', vim.lsp.buf.rename)
-        vim.keymap.set('n', '<Leader>r', vim.lsp.buf.references)
-        vim.keymap.set('n', '<Leader>q', vim.lsp.buf.hover)
-        vim.keymap.set('n', '<Leader>t', vim.lsp.buf.type_definition)
+        vim.keymap.set('n', '<Leader>a', vim.lsp.buf.code_action, { desc = 'Code [A]ction' })
+        vim.keymap.set('n', '<Leader>ci', vim.lsp.buf.incoming_calls, { desc = '[C]alls [I]ncoming' })
+        vim.keymap.set('n', '<Leader>co', vim.lsp.buf.outgoing_calls, { desc = '[C]alls [O]outgoing' })
+        vim.keymap.set('n', '<Leader>d', vim.lsp.buf.definition, { desc = 'Go to [D]efinition' })
+        vim.keymap.set('n', '<Leader>f', vim.lsp.buf.format, { desc = '[F]ormat buffer' })
+        vim.keymap.set('n', '<Leader>i', vim.lsp.buf.implementation, { desc = 'Go to [I]mplementation' })
+        vim.keymap.set('n', '<Leader>m', vim.lsp.buf.rename, { desc = 'Rena[m]e' })
+        vim.keymap.set('n', '<Leader>r', vim.lsp.buf.references, { desc = 'Show [R]eferences' })
+        vim.keymap.set('n', '<Leader>q', vim.lsp.buf.hover, { desc = 'Show hover docs' })
+        vim.keymap.set('n', '<Leader>t', vim.lsp.buf.type_definition, { desc = 'Go to [T]ype definition' })
 
-        vim.keymap.set('n', '<Leader>en', vim.diagnostic.goto_next)
-        vim.keymap.set('n', '<Leader>ep', vim.diagnostic.goto_prev)
+        vim.keymap.set('n', '<Leader>en', vim.diagnostic.goto_next, { desc = '[E]rror [N]ext' })
+        vim.keymap.set('n', '<Leader>ep', vim.diagnostic.goto_prev, { desc = '[E]rror [P]revious' })
     end
 })
 
