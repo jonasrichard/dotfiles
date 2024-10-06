@@ -11,7 +11,7 @@ local ensure_packer = function()
 end
 
 -- This line is needed for installing Packer
-local packer_bootstrap = ensure_packer()
+-- local packer_bootstrap = ensure_packer()
 
 require('packer').startup(function(use)
     -- Packer can manage itself
@@ -90,6 +90,9 @@ require('packer').startup(function(use)
 
     -- emmet plugin
     use('olrtg/nvim-emmet')
+
+    -- Gen plugin with llama
+    use('David-Kunz/gen.nvim')
 
     use('sindrets/diffview.nvim')
 

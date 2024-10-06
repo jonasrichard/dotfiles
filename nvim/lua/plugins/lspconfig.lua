@@ -37,6 +37,8 @@ lspconfig.lua_ls.setup({
     }
 })
 
+lspconfig.pyright.setup({})
+
 lspconfig.rust_analyzer.setup({
     settings = {
         ["rust_analyzer"] = {

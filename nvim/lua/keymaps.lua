@@ -1,8 +1,8 @@
 -- Modules map to leader key
 vim.g.mapleader = ','
 
-vim.keymap.set('n', '<Leader>n', '<Cmd>NvimTreeToggle<cr>')
-vim.keymap.set('n', '<Leader>o', '<Cmd>AerialToggle<cr>')
+vim.keymap.set('n', '<Leader>n', '<Cmd>NvimTreeToggle<cr>', { desc = 'Toggle [N]vim tree' })
+vim.keymap.set('n', '<Leader>o', '<Cmd>AerialToggle<cr>', { desc = 'Show [O]utline' })
 
 vim.keymap.set('n', '<F2>', '<Cmd>bp|bd #<CR>')
 vim.keymap.set('n', '<F3>', '<Cmd>bprevious<CR>')
@@ -16,15 +16,15 @@ vim.keymap.set('n', '<leader>oq', vim.diagnostic.setloclist, { desc = "[O]pen [Q
 vim.keymap.set('n', '<Leader>c', '<Cmd>cclose<CR>')
 
 -- Quicker save
-vim.keymap.set('n', '<Leader>w', '<Cmd>w<CR>')
+vim.keymap.set('n', '<Leader>w', '<Cmd>w<CR>', { desc = 'Write file' })
 
 vim.keymap.set('n', '<Leader>?', function() require('which-key').show({ global = false }) end, { desc = 'Show key mapping' })
 
 -- Move between windows
-vim.keymap.set('n', '<Leader>h', '<c-w>h')
-vim.keymap.set('n', '<Leader>j', '<c-w>j')
-vim.keymap.set('n', '<Leader>k', '<c-w>k')
-vim.keymap.set('n', '<Leader>l', '<c-w>l')
+vim.keymap.set('n', '<Leader>h', '<c-w>h', { desc = 'Focus left window' })
+vim.keymap.set('n', '<Leader>j', '<c-w>j', { desc = 'Focus bottom window' })
+vim.keymap.set('n', '<Leader>k', '<c-w>k', { desc = 'Focus upper window' })
+vim.keymap.set('n', '<Leader>l', '<c-w>l', { desc = 'Focus right window' })
 
 -- Resize windows
 vim.keymap.set('n', '<up>', function() resize_current_window(0, -5) end)
@@ -32,9 +32,9 @@ vim.keymap.set('n', '<down>', function() resize_current_window(0, 5) end)
 vim.keymap.set('n', '<left>', function() resize_current_window(-5, 0) end)
 vim.keymap.set('n', '<right>', function() resize_current_window(5, 0) end)
 
-vim.keymap.set('v', '<Leader>y', '"*y')
+vim.keymap.set('v', '<Leader>y', '"*y', { desc = 'Yank to clipboard' })
 -- Replace without spoiling the yank buffer
-vim.keymap.set('x', '<Leader>p', '\"_dP')
+vim.keymap.set('x', '<Leader>p', '\"_dP', { desc = 'Paste and keep yank' })
 vim.keymap.set('n', '<Leader>yl', function() vim.fn.setreg('*', vim.fn.getline('.')) end)
 
 -- url encode and decode
