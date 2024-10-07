@@ -66,4 +66,5 @@ brew install asdf autojump bat dive duf exa fzf htop neovim ripgrep watch
 brew install graphviz rust rust-analyzer
 brew install go golangci-lint
 brew install jq k9s yq
+brew install pylyzer pyright
 ```
