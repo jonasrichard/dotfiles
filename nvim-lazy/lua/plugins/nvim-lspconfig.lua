@@ -1,16 +1,19 @@
+--vim.diagnostic.config({
+--  virtual_text = false,
+--})
+
 return {
   "neovim/nvim-lspconfig",
   opts = {
     servers = {
-      -- pyright will be automatically installed with mason and loaded with lspconfig
-      pyright = {},
-
       gopls = {
         analyses = {
           unusedparams = true,
         },
         staticcheck = true,
       },
+
+      pyright = {},
 
       rust_analyzer = {},
     },

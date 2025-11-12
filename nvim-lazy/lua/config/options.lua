@@ -7,4 +7,5 @@ vim.opt.tabstop = 4
 
 vim.g.snacks_animate = false
 
+-- Disable pairs of quotes
 vim.g.minipairs_disable = true
