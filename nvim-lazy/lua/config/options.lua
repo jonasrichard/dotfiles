@@ -5,6 +5,7 @@
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 
+-- Don't animate
 vim.g.snacks_animate = false
 
 -- Disable pairs of quotes

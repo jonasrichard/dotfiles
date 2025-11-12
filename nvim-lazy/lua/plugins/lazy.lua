@@ -5,6 +5,7 @@ return {
       colorscheme = "gruvbox",
     },
   },
+  -- Disable incremental search for 's'
   {
     "folke/flash.nvim",
     keys = {
