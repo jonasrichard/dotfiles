@@ -1,19 +1,19 @@
 function SplitVisualSelection()
-  -- A kijelölés sorainak lekérése
+  -- Getting the lines of the selection
   local start_row = vim.fn.line("'<")
   local end_row = vim.fn.line("'>")
   local lines = vim.api.nvim_buf_get_lines(0, start_row - 1, end_row, false)
 
-  -- A sorok összefűzése egyetlen szöveggé
+  -- Joining the lines to a single line
   local text = table.concat(lines, " ")
 
-  -- A szöveg szavakra bontása
+  -- Break the line to words
   local words = {}
   for word in text:gmatch("%S+") do
     table.insert(words, word)
   end
 
-  -- A szöveg újraformázása
+  -- Reformat text
   local new_lines = {}
   local current_line = ""
   local max_length = 80
@@ -31,23 +31,33 @@ function SplitVisualSelection()
     end
   end
 
-  -- Az utolsó sor hozzáadása
+  -- Adding the last line
   table.insert(new_lines, current_line)
 
-  -- A kijelölt sorok törlése és az új sorok beillesztése
+  -- Deleting the selected line and inserting the new wrapped lines
   vim.api.nvim_buf_set_lines(0, start_row - 1, end_row, false, new_lines)
 end
 
-function WordWrap()
-  local mode = vim.fn.mode()
+local wk = require("which-key")
 
-  print(mode)
-end
+wk.add({
+  { "<leader>r", group = "Richards shortcuts" },
+})
 
---vim.api.nvim_set_keymap("v", "<leader>aw", ":lua WordWrap()<CR>", { noremap = true, silent = true })
-
-vim.api.nvim_set_keymap("v", "<leader>aw", ":lua SplitVisualSelection()<CR>", {
+vim.api.nvim_set_keymap("v", "<leader>rw", ":lua SplitVisualSelection()<CR>", {
   noremap = true,
   silent = true,
   desc = "Word wrap selection",
+})
+
+vim.api.nvim_set_keymap("n", "<leader>bf", ":lua vim.notify(vim.fn.expand('%'))<CR>", {
+  noremap = true,
+  silent = true,
+  desc = "Show the path of the current buffer",
+})
+
+vim.api.nvim_set_keymap("n", "<leader>bt", ":Neotree reveal<CR>", {
+  noremap = true,
+  silent = true,
+  desc = "Reveal buffer in neo-tree",
 })

@@ -13,6 +13,17 @@ return {
     },
   },
   {
+    "nvim-neo-tree/neo-tree.nvim",
+    opts = {
+      filesystem = {
+        follow_current_file = {
+          enabled = false,
+          leave_dirs_open = false,
+        },
+      },
+    },
+  },
+  {
     "snacks.nvim",
     opts = {
       indent = { enabled = false },
