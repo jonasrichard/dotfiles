@@ -45,3 +45,5 @@
 [core]
 	editor = nvim
 	excludesfile = /Users/richard/.gitignore
+  # Don't paginate if it fits on the screen
+  pager = "less -X -F"
