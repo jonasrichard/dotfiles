@@ -37,4 +37,9 @@ sysctl 'fs.inotify.max_user_instances = 512'
 
 ```shell
 kubectl debug -it <pod-name> --image=busybox --target=<container-name>
+
+# or with netshoot
+
+kubectl debug -it richardbox --image=nicolaka/netshoot --target=richardbox
+docker run -it --net container:<container-id> nicolaka/netshoot
 ```
