@@ -12,3 +12,23 @@
 Then
 
 `KUBECONFIG=.kube-local.yaml k9s`
+
+## Colima
+
+To start colima but edit the config file before you can
+
+```shell
+colima start --edit --editor nvim
+```
+
+For me k9s complained that it cannot make an inotify, for that you need to edit
+limits
+
+```shell
+colima ssh
+sysctl 'fs.inotify.max_user_instances = 512'
+```
+
+## Commands
+
+* `kubectl api-resources`
