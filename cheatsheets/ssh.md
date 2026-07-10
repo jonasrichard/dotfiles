@@ -7,7 +7,7 @@ if key doesn't have a keypass which is not that much recommended.
 
 ```shell
 ssh-keygen -t rsa -b 4096 -C "your.email@address"
-ssh-keygen -t ed -b 4096 -C "your.email@address"
+ssh-keygen -t ed25519 -C "your.email@address"
 ```
 
 Set up `.ssh/config`, you may need `ssh.dev.azure.com` host, too., you may need `ssh.dev.azure.com` host, too., you may need `ssh.dev.azure.com` host, too.
