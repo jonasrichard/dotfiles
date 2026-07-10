@@ -9,9 +9,11 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 ### Install Nerd font
 
 ```
-brew tap homebrew/cask-fonts
-brew install font-hack-nerd-font
+brew install --cask font-hack-nerd-font
 ```
+
+It installs the fonts into `~/Library/Fonts/`. Don't forget to change the font in your terminal
+application, too.
 
 Or for Ubuntu, download the font from [here](https://www.nerdfonts.com/font-downloads).
 And copy it to `~/.fonts/` and reload the font cache `fc-cache -fv`.
@@ -27,6 +29,14 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~
 Set `ZSH_THEME="powerlevel10k/powerlevel10k"` in `~/.zshrc`. Start a new shell and `p10k configure` runs automatically.
 
 ### zsh setup
+
+I go with Starship instead of the old PowerLevel10k.
+
+```shell
+brew install starship
+```
+
+And follow the instructions on [the page](https://starship.rs/).
 
 Install plugins which helps a lot.
 
