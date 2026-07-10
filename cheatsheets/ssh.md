@@ -6,8 +6,8 @@ First generate a key with the correct encryption. Since we start agent from the 
 if key doesn't have a keypass which is not that much recommended.
 
 ```shell
-ssh-keygen -t rsa -b 4096 -C "your.email@address"
-ssh-keygen -t ed25519 -C "your.email@address"
+ssh-keygen -t rsa -b 4096 -C "your.email@address" -f id_keyfile
+ssh-keygen -t ed25519 -C "your.email@address" -f id_keyfile
 ```
 
 Set up `.ssh/config`, you may need `ssh.dev.azure.com` host, too., you may need `ssh.dev.azure.com` host, too., you may need `ssh.dev.azure.com` host, too.
