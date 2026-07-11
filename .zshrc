@@ -10,8 +10,11 @@ setopt HIST_SAVE_NO_DUPS
 # vi keybidings
 bindkey -v
 
-bindkey "\e[A" history-beginning-search-backward
-bindkey "\e[B" history-beginning-search-forward
+# fzf widget
+bindkey "^R" fzf-history-widget
+
+#bindkey "\e[A" history-beginning-search-backward
+#bindkey "\e[B" history-beginning-search-forward
 
 # Completion
 autoload -U compinit; compinit
@@ -20,6 +23,11 @@ eval "$(fzf --zsh)"
 eval "$(kubectl completion zsh)"
 eval "$(kind completion zsh)"
 eval "$(uv generate-shell-completion zsh)"
+
+# Completion options
+LS_COLORS="di=1;34:ln=1;36:ex=1;32:*.tar=1;31:*.zip=1;31:*.gz=1;31:*.7z=1;31:*.bz2=1;31:*.xz=1;31:*.jpg=33:*.jpeg=33:*.png=33:*.gif=33:*.mp3=35:*.wav=35:*.avi=35:*.mkv=35:*.pdf=36:*.txt=36:*.sh=1;32"
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' menu select
 
 alias k='kubectl'
 alias la='ls -la --color'
