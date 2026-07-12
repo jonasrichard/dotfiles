@@ -5,12 +5,13 @@
 ```shell
 brew install \
     dust \
-    starship
+    fzf \
+    starship \
+    zsh-syntax-highlighting
 
 brew install \
     direnv \
     delta \
-    fzf \
     git \
     gitui \
     go \

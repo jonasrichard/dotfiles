@@ -10,11 +10,8 @@ setopt HIST_SAVE_NO_DUPS
 # vi keybidings
 bindkey -v
 
-# fzf widget
-bindkey "^R" fzf-history-widget
-
-#bindkey "\e[A" history-beginning-search-backward
-#bindkey "\e[B" history-beginning-search-forward
+# Completion setup
+# ----------------
 
 # Completion
 autoload -U compinit; compinit
@@ -28,6 +25,24 @@ eval "$(uv generate-shell-completion zsh)"
 LS_COLORS="di=1;34:ln=1;36:ex=1;32:*.tar=1;31:*.zip=1;31:*.gz=1;31:*.7z=1;31:*.bz2=1;31:*.xz=1;31:*.jpg=33:*.jpeg=33:*.png=33:*.gif=33:*.mp3=35:*.wav=35:*.avi=35:*.mkv=35:*.pdf=36:*.txt=36:*.sh=1;32"
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' menu select
+
+# fzf widget
+bindkey "^R" fzf-history-widget
+
+zle -N fzf-history-widget
+zle -N fzf-completion
+zle -N fzf-file-widget
+zle -N fzf-cd-widget
+
+# Turn on reverse layout and preview
+export FZF_CTRL_R_OPTS="--layout=reverse --preview='echo {}' --info=inline"
+
+# Syntax highlighting of the current command line
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+autoload -U colors && colors
+
+# Development setup
+# -----------------
 
 alias k='kubectl'
 alias la='ls -la --color'
@@ -50,6 +65,13 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+
+# bun completions
+[ -s "/Users/richardjonas/.bun/_bun" ] && source "/Users/richardjonas/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
 # autojump combined with fzf
 #j() {
