@@ -37,6 +37,9 @@ zle -N fzf-cd-widget
 # Turn on reverse layout and preview
 export FZF_CTRL_R_OPTS="--layout=reverse --preview='echo {}' --info=inline"
 
+# zsh-autosuggestions
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 # Syntax highlighting of the current command line
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 autoload -U colors && colors

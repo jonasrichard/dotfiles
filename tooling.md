@@ -7,6 +7,7 @@ brew install \
     dust \
     fzf \
     starship \
+    zsh-autosuggestions \
     zsh-syntax-highlighting
 
 brew install \
