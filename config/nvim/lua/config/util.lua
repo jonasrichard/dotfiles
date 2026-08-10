@@ -61,3 +61,9 @@ vim.api.nvim_set_keymap("n", "<leader>bt", ":Neotree reveal<CR>", {
   silent = true,
   desc = "Reveal buffer in neo-tree",
 })
+
+vim.api.nvim_set_keymap("t", "<leader>re", "<C-\\><C-n>", {
+  noremap = true,
+  silent = true,
+  desc = "Exit terminal mode",
+})

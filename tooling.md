@@ -11,8 +11,9 @@ brew install \
     zsh-syntax-highlighting
 
 brew install \
-    direnv \
     delta \
+    diffnav \
+    direnv \
     git \
     gitui \
     go \
@@ -21,7 +22,8 @@ brew install \
     mise \
     nvim \
     rg \
-    rust-analyzer
+    rust-analyzer \
+    shellcheck
 
 brew install \
     colima \
@@ -50,3 +52,13 @@ cargo install procs
 ```
 
 lsof cheatsheet
+
+## Markdown knowledge base
+
+To organize knowledge I use a set of hyperlinked markdown files which can be
+service by go-grip.
+
+```shell
+go install github.com/chrishrb/go-grip@latest
+./go-grip
+```

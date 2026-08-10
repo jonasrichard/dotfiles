@@ -1,0 +1,8 @@
+c   External diff with file in opposite panel
+    OTHER_FILE="%D/%p"
+    if [ -f "$OTHER_FILE" ]; then
+        nvim -d "%f" "$OTHER_FILE"
+    else
+        echo "File $OTHER_FILE does not exist in opposite panel"
+        read -n 1 -s -r -p "Press any key to continue..."
+    fi
