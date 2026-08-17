@@ -1,49 +1,51 @@
-[user]
-	name = Richard Jonas
-	email = richard.jonas.76@gmail.com
-
-[push]
-	default = simple
-
-[filter "lfs"]
-	smudge = git-lfs smudge %f
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean %f
+[alias]
+    a       = add
+    ci      = commit
+    co      = checkout
+    d       = diff
+    dn      = ! git diff | diffnav
+    f       = fetch -p
+    pl      = pull
+    ps      = push
+    s       = status
 
 [color]
-    ui = true
+    ui      = true
 
-[log]
-    decorate
+[core]
+    editor  = nvim
+    pager   = delta
+#pager = "less -X -F"
+
+[credential]
+    helper  = osxkeychain
+
+[delta]
+    dark            = true
+    line-numbers    = true
+    navigate        = true
+    side-by-side    = true
+
+[filter "lfs"]
+    clean       = git-lfs clean -- %f
+    smudge      = git-lfs smudge -- %f
+    process     = git-lfs filter-process
+    required    = true
 
 [grep]
     lineNumber
 
-[pull]
-    rebase = true
+[interactive]
+    diffFilter  = delta --color-only
 
-[alias]
-    s       = status
-    co      = checkout
-    ci      = commit
-    a       = add
-    g       = grep
-    d       = diff
-    b       = branch
-    ps      = push
-    pl      = pull
-    f       = fetch
-    lo      = log --oneline --graph
-    msync   = fetch origin master:master
-    dsync   = fetch origin develop:develop
-    report  = log --pretty=format:'[%h] %ad %aN %s' --date=short
+[log]
+    decorate
+    dsync       = fetch origin develop:develop
+    report      = log --pretty=format:'[%h] %ad %aN %s' --date=short
 
-[credential]
-    helper = osxkeychain
+[merge]
+    conflictStyle = zdiff3
 
-[core]
-	editor = nvim
-	excludesfile = /Users/richard/.gitignore
-  # Don't paginate if it fits on the screen
-  pager = "less -X -F"
+[user]
+    name  = Richard Jonas
+    email = richard.jonas.76@gmail.com
