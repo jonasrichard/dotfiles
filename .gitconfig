@@ -1,12 +1,18 @@
 [alias]
     a       = add
+    b       = branch
     ci      = commit
     co      = checkout
     d       = diff
     dn      = ! git diff | diffnav
+    dsync   = fetch origin develop:develop
     f       = fetch -p
+    g       = grep
+    lo      = log --oneline --graph
+    msync   = fetch origin master:master
     pl      = pull
     ps      = push
+    report  = log --pretty=format:'[%h] %ad %aN %s' --date=short
     s       = status
 
 [color]
