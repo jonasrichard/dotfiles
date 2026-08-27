@@ -10,7 +10,7 @@ return {
         analyses = {
           unusedparams = true,
         },
-        staticcheck = true,
+        staticcheck = false,
       },
 
       pyright = {},
