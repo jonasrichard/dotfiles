@@ -32,21 +32,37 @@ drmi() {
     docker rmi "$image_id"
 }
 
-fzf-docker-image-widget() {
-    # Get local docker image repository:tag names
-    local selected_image
+_fzf_complete_docker() {
+    local args=$*
 
-    selected_image=$(docker images --format '{{.Repository}}:{{.Tag}}' | fzf --height 40% --reverse)
-
-    if [[ -n "$selected_image" ]]; then
-        LBUFFER="${LBUFFER}${selected_image}"
+    if [[ "$args" == *"manifest inspect"* ]]; then
+        _fzf_complete --reverse --prompt="Docker Images> " -- "$@" < <(
+            docker images --format '{{.Repository}}:{{.Tag}}'
+        )
+    else
+        eval "zle ${fzf_default_completion:-expand-or-complete}"
     fi
-
-    zle reset-prompt
 }
 
-# Register as a ZLE widget
-zle -N fzf-docker-image-widget
+_fzf_complete_docker_post() {
+    awk '{print $1}'
+}
 
-# Bind to Ctrl+I (or change ^I to your preferred key combination like ^g)
-bindkey '^F' fzf-docker-image-widget
+#fzf-docker-image-widget() {
+#    # Get local docker image repository:tag names
+#    local selected_image
+#
+#    selected_image=$(docker images --format '{{.Repository}}:{{.Tag}}' | fzf --height 40% --reverse)
+#
+#    if [[ -n "$selected_image" ]]; then
+#        LBUFFER="${LBUFFER}${selected_image}"
+#    fi
+#
+#    zle reset-prompt
+#}
+#
+## Register as a ZLE widget
+#zle -N fzf-docker-image-widget
+#
+## Bind to Ctrl+I (or change ^I to your preferred key combination like ^g)
+#bindkey '^F' fzf-docker-image-widget
