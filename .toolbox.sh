@@ -32,16 +32,26 @@ drmi() {
     docker rmi "$image_id"
 }
 
+_fzf_complete_docker_images() {
+    _fzf_complete --reverse --prompt="Docker Images> " -- "$@" < <(
+        docker images --format '{{.Repository}}:{{.Tag}}'
+    )
+}
+
 _fzf_complete_docker() {
     local args=$*
 
-    if [[ "$args" == *"manifest inspect"* ]]; then
-        _fzf_complete --reverse --prompt="Docker Images> " -- "$@" < <(
-            docker images --format '{{.Repository}}:{{.Tag}}'
-        )
-    else
+    case "$args" in
+    *"manifest inspect"*)
+        _fzf_complete_docker_images "$@"
+        ;;
+    *"rmi"*)
+        _fzf_complete_docker_images "$@"
+        ;;
+    *)
         eval "zle ${fzf_default_completion:-expand-or-complete}"
-    fi
+        ;;
+    esac
 }
 
 _fzf_complete_docker_post() {
