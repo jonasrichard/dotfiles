@@ -29,6 +29,13 @@ colima ssh
 sysctl 'fs.inotify.max_user_instances = 512'
 ```
 
+## Insecure access
+
+```bash
+k9s --insecure-skip-tls-verify
+kubectl get --insecure-skip-tls-verify ...
+```
+
 ## Commands
 
 - `kubectl api-resources`
